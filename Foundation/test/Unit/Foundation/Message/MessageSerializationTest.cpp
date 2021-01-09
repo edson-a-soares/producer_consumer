@@ -1,7 +1,7 @@
 #include <map>
 #include <string>
 #include "gtest/gtest.h"
-#include "Foundation/Message/Message.h"
+#include "Foundation/Message/XMLMessage.h"
 
 TEST(MessageTest, MessageXmlSerialization)
 {
@@ -26,7 +26,7 @@ TEST(MessageTest, MessageXmlSerialization)
 
     std::string content = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.";
 
-    auto message = Foundation::Message::Message(content, attributes, "93120f46-a11d-11ea-960a-d46a6af0899d");
+    auto message = Foundation::Message::XMLMessage(content, attributes, "93120f46-a11d-11ea-960a-d46a6af0899d");
 
 
     ASSERT_EQ(message.toXml(), xml);

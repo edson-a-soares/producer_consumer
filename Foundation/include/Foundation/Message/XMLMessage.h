@@ -1,5 +1,5 @@
-#ifndef Foundation_Message_Message_INCLUDED
-#define Foundation_Message_Message_INCLUDED
+#ifndef Foundation_Message_XMLMessage_INCLUDED
+#define Foundation_Message_XMLMessage_INCLUDED
 
 #include <map>
 #include <string>
@@ -14,7 +14,7 @@ namespace Foundation {
 namespace Message {
 
 
-    class API Message :
+    class API XMLMessage :
         public MessageInterface,
         public AbstractXmlMessage,
         public Util::XmlSerializableInterface
@@ -22,8 +22,8 @@ namespace Message {
         template<class T> using optional = std::experimental::optional<T>;
 
     public:
-        Message() = delete;
-        Message(
+        XMLMessage() = delete;
+        XMLMessage(
             std::string body,
             std::map<std::string, std::string> & attributes,
             optional<std::string> id = std::experimental::nullopt,

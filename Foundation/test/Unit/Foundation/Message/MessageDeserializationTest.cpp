@@ -1,7 +1,6 @@
 #include <string>
 #include "gtest/gtest.h"
-#include "Foundation/Message/Message.h"
-#include "Foundation/Message/MessageParser.h"
+#include "Foundation/Message/XMLMessageParser.h"
 
 TEST(MessageTest, MessageXmlDeserialization)
 {
@@ -26,7 +25,7 @@ TEST(MessageTest, MessageXmlDeserialization)
 
     std::string content = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.";
 
-    auto parser  = Foundation::Message::MessageParser();
+    auto parser  = Foundation::Message::XMLMessageParser();
     auto message = parser.fromXml(xml);
 
     ASSERT_FALSE(message->error());
