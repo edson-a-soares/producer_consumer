@@ -1,0 +1,11 @@
+<?xml version = "1.0"?>
+<message>
+    <id></id>
+    <attributes>
+        <to></to>
+        <from></from>
+        <subject></subject>
+    </attributes>
+    <character number=""/>
+    <body></body>
+</message>
