@@ -19,3 +19,6 @@ before_script:
 script:
   # It run the tests into the Docker container.
   - docker run producer-consumer /bin/bash -c "cd /tmp/producer_consumer; ./scripts/run-all-tests.sh"
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

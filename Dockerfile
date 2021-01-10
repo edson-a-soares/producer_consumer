@@ -19,6 +19,7 @@ RUN apt-get update -qq \
     && dpkg --add-architecture i386 \
     && apt-get update \
 	&& apt-get install -yq --no-install-recommends \
+	    gcovr \
 		# Google Tests
 		libgtest-dev
 
