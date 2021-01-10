@@ -21,4 +21,7 @@ script:
   - docker run producer-consumer /bin/bash -c "cd /tmp/producer_consumer; ./scripts/run-all-tests.sh"
 
 after_success:
+  - docker run -it --rm --mount "type=bind,src=$(pwd),dst=/opt/shared" --workdir /opt/shared producer-consumer \
+        /bin/bash \
+        -c "scripts/build-application.sh; scripts/run-all-tests.sh; scripts/run-gcov-coverage-report.sh"
   - bash <(curl -s https://codecov.io/bash)
