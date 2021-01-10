@@ -67,4 +67,12 @@ find_package(Threads REQUIRED)
 # it links the dependencies to the application
 target_link_libraries(${COMPONENT_BINARY_NAME} ${DEPENDENCIES_LIBS} -lpthread -lrt -lboost_filesystem -lboost_system)
 
-add_subdirectory(test)
+#-----------------------------------------------------------------------------
+# Component's optional parts
+#-----------------------------------------------------------------------------
+if (ENABLE_TESTS)
+    add_subdirectory(test)
+    message(STATUS "Building ${COMPONENT_NAME} with tests")
+elseif ()
+    message(STATUS "Building ${COMPONENT_NAME} without tests")
+endif ()

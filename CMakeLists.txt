@@ -46,8 +46,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_HOME_DIRECTORY}/bin)
 #-----------------------------------------------------------------------------
 # Application optional features
 #-----------------------------------------------------------------------------
-option(ENABLE_TESTS
-        "Set to OFF|ON (default: OFF) to control build of EPP API tests" OFF)
+set(ENABLE_TESTS
+        "Set to OFF|ON (default: ON) to control build of EPP API tests" ON)
 
 #-----------------------------------------------------------------------------
 # Add application modules
