@@ -1,0 +1,21 @@
+language: cpp
+
+os: linux
+
+dist: trusty
+sudo: enabled
+
+services:
+  - docker
+
+notifications:
+    email:
+      on_success: never  # default: change
+      on_failure: always # default: always
+
+before_script:
+  - docker build -t producer-consumer .
+
+script:
+  # It run the tests into the Docker container.
+  - docker run producer-consumer /bin/bash -c "cd /tmp/producer_consumer; ./scripts/run-all-tests.sh"

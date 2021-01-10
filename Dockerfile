@@ -27,6 +27,7 @@ RUN cd /usr/src/gtest \
     && cmake . \
     && make && cp *.a /usr/lib
 
+# It imports and makes the application available
 COPY . /tmp/producer_consumer
 RUN cd /tmp/producer_consumer \
     && mkdir cmake-build \
@@ -34,5 +35,4 @@ RUN cd /tmp/producer_consumer \
     && cmake .. \
         -DENABLE_TESTS=ON \
     && cd /tmp/producer_consumer \
-    && cmake --build cmake-build \
-    && ./scripts/run-all-tests.sh \
+    && cmake --build cmake-build
