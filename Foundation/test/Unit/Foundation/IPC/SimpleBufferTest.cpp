@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "Poco/Exception.h"
-#include "IPC/Double/FakeSimpleBuffer.h"
+#include "Foundation/IPC/Double/FakeSimpleBuffer.h"
 
 TEST(SimpleBufferTest, AttemptToCreateOrOpenBufferWithInvalidParams)
 {
