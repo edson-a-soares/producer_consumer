@@ -35,5 +35,6 @@ RUN cd /tmp/producer_consumer \
     && cd cmake-build \
     && cmake .. \
         -DENABLE_TESTS=ON \
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE:-Debug} \
     && cd /tmp/producer_consumer \
     && cmake --build cmake-build
