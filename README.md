@@ -1,11 +1,10 @@
 [![Build Status](https://travis-ci.org/edson-a-soares/producer_consumer.svg?branch=main)](https://travis-ci.org/edson-a-soares/producer_consumer)
+[![codecov](https://codecov.io/gh/edson-a-soares/producer_consumer/branch/main/graph/badge.svg?token=BLDGUUQU8K)](https://codecov.io/gh/edson-a-soares/producer_consumer)
 
 * [About Producer–Consumer Problem](https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem)
 * [Manually Installing Dependencies](docs/Manually_installing_dependencies.md)
 * [Running with Docker](#running-with-docker)
 * [Testing](#testing)
-
-***
 
 ## Application dependencies
 
