@@ -1,8 +1,8 @@
 # Introduction
 
 * [About](https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem)
-* [Application dependencies](#markdown-header-application-dependencies)
-* [Running tests](#markdown-header-how-to-compile-the-project-and-all-its-dependencies)
+* [Application dependencies](#application-dependencies)
+* [Running tests](#running-tests)
 
 ***
 
