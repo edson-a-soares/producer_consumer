@@ -10,14 +10,14 @@
 ## Application dependencies
 
 - CMake 3.7 or newer
-- A C++14 compiler (i.e., GCC 6.3 or newer)
+- A C++14 compiler (GCC 6.3 or newer)
 - Boost 1.7
 - Poco C++ Libraries 1.9
 - Google Test
 - LCOV
 - GCOV
 
-## Application Basic Directory Structure
+## Application basic directory structure
 
 The basic directory structure is as follows:
 
@@ -59,6 +59,7 @@ cd /tmp/producer_consumer
 ##### Running coverage HTML report
 
 ```bash
+./scripts/run-all-tests.sh
 ./scripts/run-coverage-html-report.sh
 ```
 

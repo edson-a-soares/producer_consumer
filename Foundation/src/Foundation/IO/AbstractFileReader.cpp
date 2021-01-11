@@ -15,11 +15,8 @@ namespace IO {
     std::string AbstractFileReader::read()
     {
 	    Poco::File configurationFile = Poco::File(_filePath);
-        if ( !configurationFile.exists() || !configurationFile.isFile() )
-            throw Poco::FileNotFoundException("File Not Found", " File " + _filePath + " does not exists.", 500);
-
-        if ( !configurationFile.canRead() )
-            throw Poco::ReadFileException("File Not Readable", "File " + _filePath + " is not a readable file.", 500);
+        if ( !configurationFile.exists() )
+            throw Poco::FileNotFoundException("File Not Found", " File " + _filePath + " does not exists.");
 
         std::stringstream buffer;
         std::ifstream fileStream(configurationFile.path().c_str());

@@ -1,9 +1,11 @@
 #include <string>
+#include <memory>
 #include "gtest/gtest.h"
 #include "Foundation/Message/XMLMessageParser.h"
 
 TEST(MessageTest, MessageXmlDeserialization)
 {
+    using namespace Foundation::Message;
 
     std::string xml;
     xml.append("<message>");
@@ -25,8 +27,8 @@ TEST(MessageTest, MessageXmlDeserialization)
 
     std::string content = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.";
 
-    auto parser  = Foundation::Message::XMLMessageParser();
-    auto message = parser.fromXml(xml);
+    auto parser  = std::make_unique<XMLMessageParser>();
+    auto message = parser->fromXml(xml);
 
     ASSERT_FALSE(message->error());
     ASSERT_EQ(message->body(), content);
