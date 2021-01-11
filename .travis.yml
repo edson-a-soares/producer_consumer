@@ -14,14 +14,14 @@ notifications:
       on_failure: always # default: always
 
 before_script:
-  - docker build -t producer-consumer .
+  - docker build -t ${TRAVIS_REPO_SLUG}:${TRAVIS_COMMIT} .
 
 script:
   # It run the tests into the Docker container.
-  - docker run producer-consumer /bin/bash -c "cd /tmp/producer_consumer; ./scripts/run-all-tests.sh"
+  - docker run ${TRAVIS_REPO_SLUG}:${TRAVIS_COMMIT} /bin/bash -c "cd /tmp/producer_consumer; ./scripts/run-all-tests.sh"
 
 after_success:
-  - docker run -it --rm --mount "type=bind,src=$(pwd),dst=/opt/shared" --workdir /opt/shared producer-consumer \
-        /bin/bash \
-        -c "scripts/build-application.sh; scripts/run-all-tests.sh; scripts/run-gcov-coverage-report.sh"
+  - docker run -it --workdir /opt/shared --name=docker-environment --rm -v `pwd`:/opt/shared
+      ${TRAVIS_REPO_SLUG}:${TRAVIS_COMMIT} /bin/bash
+      -c "scripts/build-application.sh; scripts/run-all-tests.sh; scripts/run-gcov-coverage-report.sh"
   - bash <(curl -s https://codecov.io/bash)
