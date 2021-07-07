@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classCLI_1_1CommandInterface.html" title="CLI::CommandInterface" alt="" coords="5,81,168,108"/>
+<area shape="rect" id="node2" href="$classCLI_1_1DaemonLoopRun.html" title="CLI::DaemonLoopRun" alt="" coords="236,5,388,32"/>
+<area shape="rect" id="node3" href="$classCLI_1_1DaemonLoopStop.html" title="CLI::DaemonLoopStop" alt="" coords="235,56,389,83"/>
+<area shape="rect" id="node4" href="$classCLI_1_1ShowHelp.html" title="CLI::ShowHelp" alt="" coords="257,107,367,133"/>
+<area shape="rect" id="node5" href="$classCLI_1_1StandaloneMessageBus.html" title="CLI::StandaloneMessageBus" alt="" coords="216,157,408,184"/>
+</map>

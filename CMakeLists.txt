@@ -53,3 +53,8 @@ set(ENABLE_TESTS
 # Add application modules
 #-----------------------------------------------------------------------------
 add_subdirectory(Foundation)
+
+#-----------------------------------------------------------------------------
+# It configures documentation
+#-----------------------------------------------------------------------------
+include(DocumentationSettings)

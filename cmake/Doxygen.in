@@ -1,0 +1,31 @@
+PROJECT_NAME            = "The Producer/Consumer Problem"
+PROJECT_NUMBER          = 0.0.1
+FILE_PATTERNS           = *.h \
+                            *.cpp \
+                            *.md
+STRIP_FROM_PATH         = @PROJECT_SOURCE_DIR@ \
+                            @PROJECT_BINARY_DIR@
+
+RECURSIVE               = YES
+VERBATIM_HEADERS        = NO
+GENERATE_LATEX          = NO
+GENERATE_TREEVIEW       = NO
+HAVE_DOT                = YES
+CALLER_GRAPH            = YES
+CALL_GRAPH              = YES
+INCLUDE_GRAPH           = YES
+INCLUDED_BY_GRAPH       = YES
+GRAPHICAL_HIERARCHY     = YES
+COLLABORATION_GRAPH     = YES
+SOURCE_BROWSER          = YES
+
+OUTPUT_DIRECTORY        = @CMAKE_HOME_DIRECTORY@/docs/doxygen
+INPUT                   = @CMAKE_HOME_DIRECTORY@/Foundation/include \
+                            @CMAKE_HOME_DIRECTORY@/Foundation/src \
+                            @CMAKE_HOME_DIRECTORY@/Consumer/include \
+                            @CMAKE_HOME_DIRECTORY@/Consumer/src \
+                            @CMAKE_HOME_DIRECTORY@/Producer/include \
+                            @CMAKE_HOME_DIRECTORY@/Producer/src
+INPUT                  += @CMAKE_HOME_DIRECTORY@/README.md
+
+USE_MDFILE_AS_MAINPAGE  = @CMAKE_HOME_DIRECTORY@/README.md

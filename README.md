@@ -65,5 +65,6 @@ cd /tmp/producer_consumer
 
 ### Useful links ###
 * [Producer–Consumer Problem](https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem)
-* [Google Test](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md)
+* [Google Test](https://github.com/google/googletest/blob/master/googletest/docs)
 * [gcov](http://manpages.ubuntu.com/manpages/xenial/man1/alpha-linux-gnu-gcov-5.1.html)
+* [Doxygen](https://www.doxygen.nl/index.html)
