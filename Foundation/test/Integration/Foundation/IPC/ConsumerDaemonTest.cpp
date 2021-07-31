@@ -1,13 +1,13 @@
 #include <string>
 #include "gtest/gtest.h"
 #include "Foundation/IPC/ConsumerDaemon.h"
-#include "Foundation/IPC/MessageBusController.h"
+#include "Foundation/IPC/MessageBusFactory.h"
 
 TEST(ConsumerDaemonTest, SingleProcessMessageExchangeWithLoopMonitoring)
 {
     using namespace Foundation::IPC;
 
-    auto messageBus = MessageBusController::createMessageBus();
+    auto messageBus = MessageBusFactory::createMessageBus();
     ASSERT_NO_THROW(ConsumerDaemon::startMonitoring(
             [](const std::string & message) -> std::string {
                 return message + " was handled the callback!!";
@@ -25,15 +25,13 @@ TEST(ConsumerDaemonTest, SingleProcessMessageExchangeWithLoopMonitoring)
     }
 
     ASSERT_NO_THROW(ConsumerDaemon::stopMonitoring());
-    ASSERT_NO_THROW(MessageBusController::destroyMessageBus());
-
 }
 
-TEST(ConsumerDaemonTest, SingleProcessMessageExchangeWithLoopMonitoringAlternativeMessageBusSendMessageVersion)
+TEST(ConsumerDaemonTest, SingleProcessMessageExchangeWithLoopMonitoringAlternativeFunctionVersion)
 {
     using namespace Foundation::IPC;
 
-    auto messageBus = MessageBusController::createMessageBus();
+    auto messageBus = MessageBusFactory::createMessageBus();
     ASSERT_NO_THROW(ConsumerDaemon::startMonitoring(
             [](const std::string & message) -> std::string {
                 return message + " was handled the callback!!";
@@ -59,6 +57,4 @@ TEST(ConsumerDaemonTest, SingleProcessMessageExchangeWithLoopMonitoringAlternati
     }
 
     ASSERT_NO_THROW(ConsumerDaemon::stopMonitoring());
-    ASSERT_NO_THROW(MessageBusController::destroyMessageBus());
-
 }

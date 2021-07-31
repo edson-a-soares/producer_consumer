@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classFoundation_1_1IPC_1_1BufferInterface.html" title="Foundation::IPC::BufferInterface" alt="" coords="5,13,216,39"/>
-<area shape="rect" id="node2" href="$classFoundation_1_1IPC_1_1AbstractBuffer.html" title="Foundation::IPC::Abstract\lBuffer" alt="" coords="264,5,439,47"/>
-<area shape="rect" id="node3" href="$classFoundation_1_1IPC_1_1BoundedBuffer.html" title="Foundation::IPC::Bounded\lBuffer" alt="" coords="487,5,663,47"/>
-</map>

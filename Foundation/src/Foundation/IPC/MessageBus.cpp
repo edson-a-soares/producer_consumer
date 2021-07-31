@@ -11,6 +11,10 @@ namespace IPC {
           outputChannel(std::move(output))
     {}
 
+    MessageBus::~MessageBus() {
+        destroyChannels();
+    }
+
     std::string MessageBus::readResponse()
     {
         return outputChannel->get();
@@ -33,6 +37,18 @@ namespace IPC {
     {
         inputChannel->put(content);
         responseHandler(outputChannel->get());
+    }
+
+    void MessageBus::destroyChannels() {
+        if (inputChannel->exists()) {
+            inputChannel->clear();
+            inputChannel->destroy();
+        }
+
+        if (outputChannel->exists()) {
+            outputChannel->clear();
+            outputChannel->destroy();
+        }
     }
 
 

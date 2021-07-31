@@ -9,6 +9,9 @@ namespace Foundation {
 namespace IPC {
 
 
+    /**
+     *
+     */
     class API ConsumerDaemon {
     public:
         static bool isMonitoring();

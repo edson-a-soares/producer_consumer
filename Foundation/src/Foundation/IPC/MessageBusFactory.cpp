@@ -2,25 +2,13 @@
 #include "Poco/Exception.h"
 #include "Foundation/IPC/BoundedBuffer.h"
 #include "Foundation/IPC/BufferChannel.h"
-#include "Foundation/IPC/MessageBusController.h"
+#include "Foundation/IPC/MessageBusFactory.h"
 
 namespace Foundation {
 namespace IPC {
 
 
-    void MessageBusController::destroyMessageBus()
-    {
-        BoundedBuffer inputChannel(BufferChannel::INPUT_CHANNEL);
-        BoundedBuffer outputChannel(BufferChannel::OUTPUT_CHANNEL);
-
-        inputChannel.clear();
-        outputChannel.clear();
-
-        inputChannel.destroy();
-        outputChannel.destroy();
-    }
-
-    std::shared_ptr<MessageBus> MessageBusController::createMessageBus()
+    std::shared_ptr<MessageBus> MessageBusFactory::createMessageBus()
     {
         std::unique_ptr<BoundedBuffer> input  = nullptr;
         std::unique_ptr<BoundedBuffer> output = nullptr;

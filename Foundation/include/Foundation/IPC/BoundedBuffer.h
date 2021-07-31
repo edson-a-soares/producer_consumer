@@ -12,6 +12,14 @@ namespace Foundation {
 namespace IPC {
 
 
+    /**
+     * This class synchronizes producers and consumers, basically. Producers write data to the buffer and consumers read it.
+     * A bounded buffer allows producers and consumers to share a single buffer synchronizing the writing and reading
+     * operations.
+     *
+     * @see AbstractBuffer
+     * @see BufferInterface
+     */
     class API BoundedBuffer : public AbstractBuffer {
     public:
         BoundedBuffer() = delete;

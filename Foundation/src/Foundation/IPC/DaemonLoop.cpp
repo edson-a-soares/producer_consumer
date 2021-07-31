@@ -1,13 +1,8 @@
-#include <zconf.h>
-#include <iostream>
 #include "Foundation/IPC/DaemonLoop.h"
 
 namespace Foundation {
 namespace IPC {
 
-
-    DaemonLoop::DaemonLoop()
-    {}
 
     DaemonLoop & DaemonLoop::instance()
     {

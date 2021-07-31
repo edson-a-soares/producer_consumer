@@ -30,8 +30,8 @@ cd boost_1_70_0
 ./b2 install
 ```
 
-Boost B2 will leave Boost binaries in the lib/ subdirectory of your installation prefix.
-You will also find a copy of the Boost headers in the include/ subdirectory of the installation prefix,
+Boost B2 will leave Boost binaries in the ```lib/``` subdirectory of your installation prefix.
+You will also find a copy of the Boost headers in the ```include/``` subdirectory of the installation prefix,
 so you can henceforth use that directory as an #include path in place of the Boost root directory.
 
 [Google Test (GTest)](https://github.com/google/googletest)
@@ -45,4 +45,10 @@ sudo apt-get install libgtest-dev
 ```
 git clone https://github.com/linux-test-project/lcov.git
 make install
+```
+
+[Doxygen and Graphviz](https://www.doxygen.nl/index.html)
+
+```
+sudo apt-get install graphviz doxygen
 ```

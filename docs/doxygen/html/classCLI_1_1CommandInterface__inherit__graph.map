@@ -1,6 +1,0 @@
-<map id="CLI::CommandInterface" name="CLI::CommandInterface">
-<area shape="rect" id="node2" href="$classCLI_1_1DaemonLoopRun.html" title="CLI::DaemonLoopRun" alt="" coords="5,80,157,107"/>
-<area shape="rect" id="node3" href="$classCLI_1_1DaemonLoopStop.html" title="CLI::DaemonLoopStop" alt="" coords="181,80,336,107"/>
-<area shape="rect" id="node4" href="$classCLI_1_1ShowHelp.html" title="CLI::ShowHelp" alt="" coords="361,80,471,107"/>
-<area shape="rect" id="node5" href="$classCLI_1_1StandaloneMessageBus.html" title="CLI::StandaloneMessageBus" alt="" coords="496,80,688,107"/>
-</map>

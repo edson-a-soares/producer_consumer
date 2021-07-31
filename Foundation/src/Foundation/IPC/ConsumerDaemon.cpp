@@ -1,7 +1,7 @@
 #include "Foundation/IPC/DaemonLoop.h"
 #include "Foundation/IPC/BufferChannel.h"
 #include "Foundation/IPC/ConsumerDaemon.h"
-#include "Foundation/IPC/MessageBusController.h"
+#include "Foundation/IPC/MessageBusFactory.h"
 
 namespace Foundation {
 namespace IPC {
@@ -9,7 +9,7 @@ namespace IPC {
 
     void ConsumerDaemon::startMonitoring(const std::function<std::string (const std::string & message)> & callback)
     {
-        auto messageBus = MessageBusController::createMessageBus();
+        auto messageBus = MessageBusFactory::createMessageBus();
         DaemonLoop::instance().runWith([=]() {
             messageBus->readMessage(callback);
         });
