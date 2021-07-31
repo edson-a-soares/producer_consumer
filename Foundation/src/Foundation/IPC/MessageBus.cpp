@@ -1,6 +1,5 @@
 #include "Foundation/IPC/MessageBus.h"
 #include "Foundation/IPC/BoundedBuffer.h"
-#include "Foundation/IPC/BufferChannel.h"
 
 namespace Foundation {
 namespace IPC {

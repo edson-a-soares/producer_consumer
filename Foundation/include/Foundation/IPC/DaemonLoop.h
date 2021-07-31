@@ -32,7 +32,7 @@ namespace IPC {
         /**
          * It checks if the daemon loop is running or not.
          *
-         * @return bool (true or false) value.
+         * @return The status (true or false) value.
          */
         bool isRunning() const;
 

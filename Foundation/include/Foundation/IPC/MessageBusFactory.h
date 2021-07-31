@@ -3,7 +3,7 @@
 
 #include "Foundation/Foundation.h"
 #include "Foundation/IPC/MessageBus.h"
-#include "Foundation/IPC/MessageBusDataInterface.h"
+#include "Foundation/IPC/MessageBusInformationInterface.h"
 
 namespace Foundation {
 namespace IPC {
@@ -11,7 +11,7 @@ namespace IPC {
 
     class API MessageBusFactory {
     public:
-        static std::shared_ptr<MessageBus> createMessageBus();
+        static std::shared_ptr<MessageBus> getMessageBus(std::unique_ptr<MessageBusInformationInterface> information);
 
     };
 
