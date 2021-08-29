@@ -7,11 +7,13 @@ namespace IPC {
 
     MessageBus::MessageBus(std::unique_ptr<BoundedBuffer> input, std::unique_ptr<BoundedBuffer> output)
         : inputChannel(std::move(input)),
-          outputChannel(std::move(output))
+          outputChannel(std::move(output)),
+          automaticChannelsManagement(true)
     {}
 
     MessageBus::~MessageBus() {
-        destroyChannels();
+        if (automaticChannelsManagement)
+            destroyChannels();
     }
 
     std::string MessageBus::readResponse()
@@ -48,6 +50,11 @@ namespace IPC {
             outputChannel->clear();
             outputChannel->destroy();
         }
+    }
+
+    void MessageBus::disableChannelsManagement()
+    {
+        automaticChannelsManagement = false;
     }
 
 

@@ -70,11 +70,20 @@ namespace IPC {
          */
         void sendMessage(const std::string & message, const std::function<void (const std::string & response)> & responseHandler);
 
+        /**
+         * It destroys the bus channels immediately.
+         */
+        void destroyChannels();
+
+        /**
+         * It allows the user to control the lifecycle of the bus channels manually.
+         */
+        void disableChannelsManagement();
+
     private:
         std::unique_ptr<BoundedBuffer> inputChannel;
         std::unique_ptr<BoundedBuffer> outputChannel;
-
-        void destroyChannels();
+        bool automaticChannelsManagement;
 
     };
 

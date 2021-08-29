@@ -1,3 +1,4 @@
+#include <regex>
 #include "Foundation/Message/XMLMessage.h"
 
 namespace Foundation {
@@ -8,11 +9,12 @@ namespace Message {
         std::string body,
         std::map<std::string, std::string> & attributes,
         std::experimental::optional<std::string> id,
-        bool error) : XMLMessage::AbstractXmlMessage("message"),
-                      _error(error),
-                      _bodySize(0),
-                      _body(std::move(body)),
-                      _attributes(attributes)
+        bool error
+    ) : XMLMessage::AbstractXmlMessage("message"),
+          _error(error),
+          _bodySize(0),
+          _body(std::move(body)),
+          _attributes(attributes)
     {
         poco_assert_msg(!_body.empty() && _body.size() < MAXIMUM_SIZE_ALLOWED, "Invalid body value.");
         poco_assert_msg(!_attributes.empty() && _attributes.size() == REQUIRED_ATTRIBUTES_NUMBER, "Invalid attributes.");
@@ -42,11 +44,17 @@ namespace Message {
     }
 
     std::string XMLMessage::toXml() {
-        return buildXML();
+        return eraseFormatting(buildXML());
     }
 
     int XMLMessage::size() {
         return _bodySize;
+    }
+
+    std::string XMLMessage::eraseFormatting(const std::string & content)
+    {
+        std::regex expression(">[\\s\r\n]*<");
+        return std::regex_replace(content, expression, "><");
     }
 
 

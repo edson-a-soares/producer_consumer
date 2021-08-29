@@ -53,6 +53,7 @@ set(ENABLE_TESTS
 # Add application modules
 #-----------------------------------------------------------------------------
 add_subdirectory(Foundation)
+add_subdirectory(ConsumerDaemon)
 
 #-----------------------------------------------------------------------------
 # It configures documentation
