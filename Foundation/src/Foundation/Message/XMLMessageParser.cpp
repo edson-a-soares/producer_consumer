@@ -1,6 +1,4 @@
 #include <memory>
-#include <iostream>
-#include "Poco/String.h"
 #include "Poco/DOM/Document.h"
 #include "Poco/DOM/NodeList.h"
 #include "Foundation/Message/XMLMessage.h"
@@ -16,9 +14,6 @@ namespace Message {
 
         Poco::XML::DOMParser parser;
         auto document = parser.parseString(xml);
-
-        auto outcome = Poco::trim(xml);
-        // std::cout << outcome << std::endl;
 
         auto idElement = document->getElementsByTagName("id");
         if ( idElement == nullptr || idElement->length() == 0 )
