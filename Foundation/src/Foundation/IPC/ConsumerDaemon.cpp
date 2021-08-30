@@ -1,17 +1,17 @@
 #include "Foundation/IPC/DaemonLoop.h"
+#include "Foundation/IPC/MessageBus.h"
 #include "Foundation/IPC/ConsumerDaemon.h"
-#include "Foundation/IPC/MessageBusFactory.h"
-#include "Foundation/IPC/ConsumerDefaultMessageBusInformation.h"
+#include "Foundation/IPC/DefaultMessageBusChannel.h"
 
 namespace Foundation {
 namespace IPC {
 
 
     void ConsumerDaemon::startListening(
-        std::unique_ptr<MessageBusInformationInterface> messageBusInformation,
+        std::unique_ptr<MessageBusChannelInterface> messageBusInformation,
         const std::function<std::string (const std::string & message)> & callback)
     {
-        auto messageBus = MessageBusFactory::getMessageBus(std::move(messageBusInformation));
+        auto messageBus = MessageBus::Factory::create(std::move(messageBusInformation));
         DaemonLoop::instance().runWith([=]() {
             messageBus->readMessage(callback);
         });

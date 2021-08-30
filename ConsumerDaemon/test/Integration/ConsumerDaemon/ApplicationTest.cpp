@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
+#include "Foundation/IPC/MessageBus.h"
 #include "ConsumerDaemon/Application.h"
 #include "Foundation/IPC/ConsumerDaemon.h"
-#include "Foundation/IPC/MessageBusFactory.h"
 #include "Foundation/Message/XMLMessageParser.h"
-#include "ConsumerDaemon/MessageBusAbstractFactory.h"
+#include "Foundation/IPC/DefaultMessageBusChannel.h"
 
 class ApplicationTest : public ::testing::Test
 {
@@ -35,9 +35,8 @@ TEST_F(ApplicationTest, ContentExchangeWithSuccess)
 {
     ::ConsumerDaemon::Application::run(0, false);
 
-    auto abstractFactory = ConsumerDaemon::MessageBusAbstractFactory::create(0);
-    auto messageBus = Foundation::IPC::MessageBusFactory::getMessageBus(abstractFactory->messageBusInformation());
-    messageBus->disableChannelsManagement();
+    auto abstractFactory = ::ConsumerDaemon::Application::createMessageBusChannelHandler(0);
+    auto messageBus = Foundation::IPC::MessageBus::Factory::createClient(abstractFactory->messageBusChannelInformation());
 
     for (int i = 0; i < 500; i++) {
 

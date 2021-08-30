@@ -6,6 +6,7 @@
 #include "Foundation/Foundation.h"
 #include "Foundation/IPC/DaemonLoop.h"
 #include "Foundation/IPC/BoundedBuffer.h"
+#include "Foundation/IPC/MessageBusChannelInterface.h"
 
 namespace Foundation {
 namespace IPC {
@@ -32,14 +33,6 @@ namespace IPC {
 
         MessageBus(MessageBus &) = delete;
         MessageBus(MessageBus &&) noexcept = default;
-
-        /**
-         * A constructor.
-         *
-         * @param inputChannel
-         * @param outputChannel
-         */
-        MessageBus(std::unique_ptr<BoundedBuffer> inputChannel, std::unique_ptr<BoundedBuffer> outputChannel);
 
         /**
          * It just gets the response message.
@@ -76,20 +69,42 @@ namespace IPC {
         void destroyChannels();
 
         /**
-         * @TODO Replace this approach for disabled by default with a method enableChannelsMethod()
+         * It creates MessageBus instances.
          *
+         * Once the MessageBus constructor is private, this is the only way to do it.
+         */
+        class Factory {
+        public:
+            static std::shared_ptr<MessageBus> create(std::unique_ptr<MessageBusChannelInterface>);
+            static std::shared_ptr<MessageBus> createClient(std::unique_ptr<MessageBusChannelInterface>);
+
+        private:
+            static std::shared_ptr<MessageBus> construct(std::unique_ptr<MessageBusChannelInterface>);
+
+        };
+
+    private:
+        bool automaticChannelsManagement;
+        std::unique_ptr<BoundedBuffer> inputChannel;
+        std::unique_ptr<BoundedBuffer> outputChannel;
+
+        /**
+         * A constructor.
+         *
+         * @param inputChannel
+         * @param outputChannel
+         */
+        MessageBus(std::unique_ptr<BoundedBuffer> inputChannel, std::unique_ptr<BoundedBuffer> outputChannel);
+
+        /**
          * It allows the user to control the lifecycle of the bus channels manually.
          *
-         * That is useful, for example, when the producer and the consumer are in different process and after using the
-         * bus the client do not want to destroy the channels.
+         * That is useful when the producer and the consumer are in different processes and, after using the bus, the
+         * client do not want to destroy the channels.
          */
         void disableChannelsManagement();
 
-    private:
-        std::unique_ptr<BoundedBuffer> inputChannel;
-        std::unique_ptr<BoundedBuffer> outputChannel;
-        bool automaticChannelsManagement;
-
+        friend Factory;
     };
 
 

@@ -4,7 +4,7 @@
 #include <memory>
 #include <string>
 #include "Foundation/Foundation.h"
-#include "Foundation/IPC/MessageBusInformationInterface.h"
+#include "Foundation/IPC/MessageBusChannelInterface.h"
 
 namespace Foundation {
 namespace IPC {
@@ -37,7 +37,7 @@ namespace IPC {
          * @param callback The listening function designated to handle the response messages.
          */
         static void startListening(
-            std::unique_ptr<MessageBusInformationInterface> messageBusInformation,
+            std::unique_ptr<MessageBusChannelInterface> messageBusInformation,
             const std::function<std::string (const std::string & message)> & callback);
 
     };

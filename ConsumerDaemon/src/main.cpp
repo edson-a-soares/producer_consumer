@@ -2,6 +2,6 @@
 
 int main (int argc, char * argv[])
 {
-    ConsumerDaemon::Application::run();
+    ConsumerDaemon::Application::run(1);
     return 0;
 }

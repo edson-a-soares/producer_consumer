@@ -8,7 +8,6 @@
 #include "boost/filesystem/path.hpp"
 #include "boost/process/search_path.hpp"
 #include "Foundation/System/Application.h"
-#include "Foundation/IPC/ConsumerDaemon.h"
 #include "Adapter/CLI/Command/ConsumerDaemonStart.h"
 
 namespace Consumer {
@@ -88,7 +87,6 @@ namespace CLI {
     int ConsumerDaemonStart::execute(int argCounter, char * argVector[])
     {
         using namespace Foundation::IO;
-        using namespace Foundation::IPC;
         using namespace Foundation::System;
 
         init(argCounter, argVector);

@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Poco/Exception.h"
 #include "Foundation/IPC/MessageBus.h"
 #include "Foundation/IPC/BoundedBuffer.h"
@@ -8,9 +7,9 @@ namespace IPC {
 
 
     MessageBus::MessageBus(std::unique_ptr<BoundedBuffer> input, std::unique_ptr<BoundedBuffer> output)
-        : inputChannel(std::move(input)),
-          outputChannel(std::move(output)),
-          automaticChannelsManagement(true)
+        : automaticChannelsManagement(true),
+          inputChannel(std::move(input)),
+          outputChannel(std::move(output))
     {}
 
     MessageBus::~MessageBus() {
@@ -59,6 +58,43 @@ namespace IPC {
     {
         automaticChannelsManagement = false;
     }
+
+
+    /**
+     * MessageBus::Factory
+     */
+    std::shared_ptr<MessageBus> MessageBus
+        ::Factory::create(std::unique_ptr<MessageBusChannelInterface> information)
+        {
+            auto messageBus = construct(std::move(information));
+            return messageBus;
+        }
+
+    std::shared_ptr<MessageBus> MessageBus
+        ::Factory::createClient(std::unique_ptr<MessageBusChannelInterface> information)
+        {
+            auto messageBus = construct(std::move(information));
+            messageBus->disableChannelsManagement();
+            return messageBus;
+        }
+
+    std::shared_ptr<MessageBus> MessageBus
+        ::Factory::construct(std::unique_ptr<MessageBusChannelInterface> channel) {
+            std::unique_ptr<BoundedBuffer> input  = nullptr;
+            std::unique_ptr<BoundedBuffer> output = nullptr;
+
+            try {
+                input  = std::make_unique<BoundedBuffer>(channel->inputName());
+                output = std::make_unique<BoundedBuffer>(channel->outputName());
+
+            } catch (Poco::FileNotFoundException &) {
+                input  = std::make_unique<BoundedBuffer>(channel->inputName(), channel->length());
+                output = std::make_unique<BoundedBuffer>(channel->outputName(), channel->length());
+
+            }
+
+            return std::shared_ptr<MessageBus>(new MessageBus(std::move(input), std::move(output)));
+        }
 
 
 } }
