@@ -10,7 +10,7 @@ namespace IPC {
 
 
     /**
-     * MessageBus data used for anything out of production environment.
+     * This MessageBus is used for anything out of the production environment, including tests.
      */
     class API DefaultMessageBusChannel : public MessageBusChannelInterface {
     public:

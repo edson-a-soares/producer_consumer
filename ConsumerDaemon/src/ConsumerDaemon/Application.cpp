@@ -1,7 +1,7 @@
 #include "ConsumerDaemon/Application.h"
 #include "Foundation/IPC/ConsumerDaemon.h"
 #include "ConsumerDaemon/DefaultChannelWithXMLMessageHandlerFactory.h"
-#include "ConsumerDaemon/ConsumerDaemonChannelWithXMLMessageHandlerFactory.h"
+#include "ConsumerDaemon/MainChannelWithXMLMessageHandlerFactory.h"
 
 namespace ConsumerDaemon {
 
@@ -26,7 +26,7 @@ namespace ConsumerDaemon {
 
         switch (option) {
             case MAIN_CHANNEL:
-                abstractFactory = std::make_unique<ConsumerDaemonChannelWithXMLMessageHandlerFactory>();
+                abstractFactory = std::make_unique<MainChannelWithXMLMessageHandlerFactory>();
                 break;
 
             default:

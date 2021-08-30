@@ -102,7 +102,7 @@ namespace IPC {
          * That is useful when the producer and the consumer are in different processes and, after using the bus, the
          * client do not want to destroy the channels.
          */
-        void disableChannelsManagement();
+        void disableInternalChannelsLifecycleManagement();
 
         friend Factory;
     };

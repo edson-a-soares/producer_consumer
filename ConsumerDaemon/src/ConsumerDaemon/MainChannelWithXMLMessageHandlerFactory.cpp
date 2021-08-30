@@ -1,13 +1,13 @@
 #include <map>
 #include <string>
 #include "Foundation/Message/XMLMessageParser.h"
-#include "Foundation/IPC/ConsumerDaemonMessageBusChannel.h"
-#include "ConsumerDaemon/ConsumerDaemonChannelWithXMLMessageHandlerFactory.h"
+#include "Foundation/IPC/MainMessageBusChannel.h"
+#include "ConsumerDaemon/MainChannelWithXMLMessageHandlerFactory.h"
 
 namespace ConsumerDaemon {
 
 
-    std::function<std::string(const std::string &)> ConsumerDaemonChannelWithXMLMessageHandlerFactory::messageHandlerFunction()
+    std::function<std::string(const std::string &)> MainChannelWithXMLMessageHandlerFactory::messageHandlerFunction()
     {
         using namespace Foundation::Message;
 
@@ -36,9 +36,9 @@ namespace ConsumerDaemon {
         };
     }
 
-    std::unique_ptr<Foundation::IPC::MessageBusChannelInterface> ConsumerDaemonChannelWithXMLMessageHandlerFactory::messageBusChannelInformation()
+    std::unique_ptr<Foundation::IPC::MessageBusChannelInterface> MainChannelWithXMLMessageHandlerFactory::messageBusChannelInformation()
     {
-        return std::make_unique<Foundation::IPC::ConsumerDaemonMessageBusChannel>();
+        return std::make_unique<Foundation::IPC::MainMessageBusChannel>();
     }
 
 

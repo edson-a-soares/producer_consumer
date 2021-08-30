@@ -11,7 +11,7 @@ namespace IPC {
 
 
     /**
-     * A daemon (or service) is a background process that is designed to run autonomously, with little or no user
+     * A daemon (or service) is a background process that is designed to runOn autonomously, with little or no user
      * intervention. This class executes a function continuously in the background and offers the controls to manage it.
      * This is like a typical loop (i.e., while) but with explicit terminating controls.
      */

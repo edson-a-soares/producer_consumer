@@ -54,7 +54,7 @@ namespace IPC {
         }
     }
 
-    void MessageBus::disableChannelsManagement()
+    void MessageBus::disableInternalChannelsLifecycleManagement()
     {
         automaticChannelsManagement = false;
     }
@@ -74,7 +74,7 @@ namespace IPC {
         ::Factory::createClient(std::unique_ptr<MessageBusChannelInterface> information)
         {
             auto messageBus = construct(std::move(information));
-            messageBus->disableChannelsManagement();
+            messageBus->disableInternalChannelsLifecycleManagement();
             return messageBus;
         }
 
