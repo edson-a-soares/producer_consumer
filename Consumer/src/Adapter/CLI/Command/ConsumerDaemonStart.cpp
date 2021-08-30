@@ -30,8 +30,8 @@ namespace CLI {
     void ConsumerDaemonStart::showArgumentsHelp()
     {
         std::cout << "available options: \n"
-            "    -r, --response-message                 It defines a default response message to the daemon loop.\n"
-            "    -h, --help                             It shows help.\n"
+            "    -c, --channel                 It runs the consumer daemon loop on a specific channel.\n"
+            "    -h, --help                    It shows help.\n"
         "\n";
     }
 

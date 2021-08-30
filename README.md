@@ -6,6 +6,7 @@
 * [Application basic directory structure](#application-basic-directory-structure)
 * [Running with Docker](#running-with-docker)
 * [Testing](#testing)
+* [Documentation](https://edson-a-soares.github.io/producer_consumer/doxygen/html)
 
 ## Application dependencies
 
@@ -16,6 +17,7 @@
 - Google Test
 - LCOV
 - GCOV
+- Doxygen
 
 ## Application basic directory structure
 
@@ -40,6 +42,29 @@ Foundation/             project and make/build files for the Foundation module
         Resources/      any supporting files for the tests
         Integration/    source files for the Foundation integration tests
         Unit/           source files for the Foundation unit tests
+
+Consumer/               project and make/build files for the Consumer module
+    include/            all header files for the Consumer module
+        Adapter/        all Consumer module adapters
+        Consumer/       all Consumer module ports
+    src/                source files for the Consumer module
+    test/               project and make/build files for the Consumer testsuite
+        Resources/      any supporting files for the tests
+        Integration/    source files for the Consumer integration tests
+        Unit/           source files for the Consumer unit tests
+        E2E/            source files for the Consumer end-to-end tests
+
+ConsumerDaemon/         project and make/build files for the ConsumerDaemon module
+    include/            all header files for the ConsumerDaemon module
+        Adapter/        all ConsumerDaemon module adapters
+        ConsumerDaemon/ all ConsumerDaemon module ports
+    src/                source files for the ConsumerDaemon module
+    test/               project and make/build files for the ConsumerDaemon testsuite
+        Resources/      any supporting files for the tests
+        Integration/    source files for the ConsumerDaemon integration tests
+        Unit/           source files for the ConsumerDaemon unit tests
+        E2E/            source files for the ConsumerDaemon end-to-end tests
+
 ```
 
 ## Running with Docker
@@ -65,6 +90,7 @@ cd /tmp/producer_consumer
 
 ### Useful links ###
 * [Producer–Consumer Problem](https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem)
+* [Ports and Adapters Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
 * [Google Test](https://github.com/google/googletest/blob/master/googletest/docs)
 * [gcov](http://manpages.ubuntu.com/manpages/xenial/man1/alpha-linux-gnu-gcov-5.1.html)
 * [Doxygen](https://www.doxygen.nl/index.html)
