@@ -16,7 +16,7 @@ namespace CLI {
 
     ConsumerDaemonStart::ConsumerDaemonStart()
         : status(EXIT_SUCCESS),
-          responseMessage()
+          daemonChannel()
     {}
 
     void ConsumerDaemonStart::showHelp()
@@ -37,10 +37,10 @@ namespace CLI {
 
     void ConsumerDaemonStart::init(int argCounter, char * argVector[])
     {
-        const char * shortOptions = "r:h";
+        const char * shortOptions = "c:h";
         const struct option longOptions[] =
         {
-            { "response-message",   required_argument, nullptr, 'r' },
+            { "channel",            required_argument, nullptr, 'c' },
             { "help",               no_argument,       nullptr, 'h' },
             { nullptr,              0,         nullptr, 0   },
         };
@@ -58,13 +58,13 @@ namespace CLI {
                 case 0:     // long options without short correspondent
                     break;
 
-                case 'r':
+                case 'c':
                     if ( optarg == nullptr ) {
                         fprintf(stderr, "%s is an invalid value for the option -%c\n", optarg, optionIndex);
-                        fprintf(stderr, "Try `%s consumer channels only --help' for more information.\n\n", argVector[0]);
+                        fprintf(stderr, "Try `%s --help' for more information.\n\n", argVector[0]);
                         exit(EXIT_FAILURE);
                     }
-                    responseMessage = std::string(optarg);
+                    daemonChannel = std::string(optarg);
                     break;
 
                 case 'h':
@@ -103,7 +103,7 @@ namespace CLI {
             }
 
             auto consumerDaemon = boost::process::search_path(Application::CONSUMER_DAEMON_BINARY_NAME, paths);
-            boost::process::child daemon(consumerDaemon);
+            boost::process::child daemon(consumerDaemon, daemonChannel);
             daemon.detach();
 
             daemonPIDs = Console::readRunningPidOf(Application::CONSUMER_DAEMON_BINARY_NAME);

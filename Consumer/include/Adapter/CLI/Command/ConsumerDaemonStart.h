@@ -19,7 +19,7 @@ namespace CLI {
 
     private:
         int status;
-        std::string responseMessage;
+        std::string daemonChannel;
 
     };
 

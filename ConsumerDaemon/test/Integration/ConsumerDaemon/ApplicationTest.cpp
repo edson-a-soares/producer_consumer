@@ -33,9 +33,11 @@ protected:
 
 TEST_F(ApplicationTest, ContentExchangeWithSuccess)
 {
-    ::ConsumerDaemon::Application::run(0, false);
+    using namespace ::ConsumerDaemon;
 
-    auto abstractFactory = ::ConsumerDaemon::Application::createMessageBusChannelHandler(0);
+    Application::runOn(Application::DEFAULT_CHANNEL, false);
+
+    auto abstractFactory = ::ConsumerDaemon::Application::createMessageBusChannelHandler(Application::DEFAULT_CHANNEL);
     auto messageBus = Foundation::IPC::MessageBus::Factory::createClient(abstractFactory->messageBusChannelInformation());
 
     for (int i = 0; i < 500; i++) {

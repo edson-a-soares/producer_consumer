@@ -6,9 +6,9 @@
 namespace ConsumerDaemon {
 
 
-    void Application::run(int channelHandler, bool keepAlive)
+    void Application::runOn(ChannelOption option, bool keepAlive)
     {
-        auto abstractFactory = createMessageBusChannelHandler(channelHandler);
+        auto abstractFactory = createMessageBusChannelHandler(option);
 
         Foundation::IPC::ConsumerDaemon::startListening(
             abstractFactory->messageBusChannelInformation(),
@@ -20,14 +20,14 @@ namespace ConsumerDaemon {
             while(Foundation::IPC::ConsumerDaemon::isListening());
     }
 
-    std::unique_ptr<MessageBusChannelHandlerFactoryInterface> Application::createMessageBusChannelHandler(int option)
+    std::unique_ptr<MessageBusChannelHandlerFactoryInterface> Application::createMessageBusChannelHandler(ChannelOption option)
     {
         std::unique_ptr<MessageBusChannelHandlerFactoryInterface> abstractFactory = nullptr;
 
         switch (option) {
-            case 1:
+            case MAIN_CHANNEL:
                 abstractFactory = std::make_unique<ConsumerDaemonChannelWithXMLMessageHandlerFactory>();
-            break;
+                break;
 
             default:
                 abstractFactory = std::make_unique<DefaultChannelWithXMLMessageHandlerFactory>();

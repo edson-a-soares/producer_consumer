@@ -10,8 +10,14 @@ namespace ConsumerDaemon {
 
     class API Application {
     public:
-        static void run(int channelHandler = 0, bool keepAlive = true);
-        static std::unique_ptr<MessageBusChannelHandlerFactoryInterface> createMessageBusChannelHandler(int option);
+        enum ChannelOption {
+            DEFAULT_CHANNEL = 0,
+            MAIN_CHANNEL
+        };
+
+        static void runOn(ChannelOption option = DEFAULT_CHANNEL, bool keepAlive = true);
+        static std::unique_ptr<MessageBusChannelHandlerFactoryInterface>
+            createMessageBusChannelHandler(ChannelOption option = DEFAULT_CHANNEL);
 
     };
 
