@@ -76,7 +76,12 @@ namespace IPC {
         void destroyChannels();
 
         /**
+         * @TODO Replace this approach for disabled by default with a method enableChannelsMethod()
+         *
          * It allows the user to control the lifecycle of the bus channels manually.
+         *
+         * That is useful, for example, when the producer and the consumer are in different process and after using the
+         * bus the client do not want to destroy the channels.
          */
         void disableChannelsManagement();
 

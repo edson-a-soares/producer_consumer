@@ -1,3 +1,5 @@
+#include <iostream>
+#include "Poco/Exception.h"
 #include "Foundation/IPC/MessageBus.h"
 #include "Foundation/IPC/BoundedBuffer.h"
 
@@ -12,6 +14,7 @@ namespace IPC {
     {}
 
     MessageBus::~MessageBus() {
+        poco_debugger_msg("MessageBus::~MessageBus()");
         if (automaticChannelsManagement)
             destroyChannels();
     }

@@ -12,7 +12,7 @@ namespace IPC {
     class API AbstractBuffer : public BufferInterface {
     public:
         AbstractBuffer() = delete;
-        ~AbstractBuffer() override = default;
+        ~AbstractBuffer() override;
         AbstractBuffer(AbstractBuffer &&) noexcept = default;   // Move constructor
         AbstractBuffer(AbstractBuffer const &) = default;       // Copy constructor
         AbstractBuffer & operator=(AbstractBuffer &&) noexcept; // Move assign

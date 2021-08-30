@@ -54,6 +54,7 @@ set(ENABLE_TESTS
 #-----------------------------------------------------------------------------
 add_subdirectory(Foundation)
 add_subdirectory(ConsumerDaemon)
+add_subdirectory(Consumer)
 
 #-----------------------------------------------------------------------------
 # It configures documentation

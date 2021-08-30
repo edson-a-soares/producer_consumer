@@ -1,5 +1,3 @@
-#include <iostream>
-#include <algorithm>
 #include <stdexcept>
 #include "boost/assert.hpp"
 #include "Poco/Exception.h"
@@ -17,7 +15,7 @@ namespace IPC {
         : _memorySpaceName(memoryName)
     {
         if (memoryName.empty())
-            throw Poco::InvalidArgumentException(0);
+            throw Poco::InvalidArgumentException("Memory space name can not be empty.");
 
         if (!AbstractBuffer::exists())
             throw Poco::FileNotFoundException("Memory space do not exists.");
@@ -33,6 +31,11 @@ namespace IPC {
             throw Poco::FileExistsException("Memory space already exists.");
 
         create(memoryName, memorySize);
+    }
+
+    AbstractBuffer::~AbstractBuffer() noexcept
+    {
+        poco_debugger_msg("MessageBus::~MessageBus()");
     }
 
     AbstractBuffer & AbstractBuffer::operator=(AbstractBuffer && other) noexcept
@@ -73,14 +76,20 @@ namespace IPC {
 
     bool AbstractBuffer::empty()
     {
-        boost::interprocess::managed_shared_memory sharedSegment(
+        try {
+            boost::interprocess::managed_shared_memory sharedSegment(
                 boost::interprocess::open_only,
                 _memorySpaceName.c_str()
             );
 
-        auto typeSizePair = sharedSegment.find<StringVector>(INTERNAL_DATA_STRUCTURE_NAME);
-        auto vector = typeSizePair.first;
-        return vector->empty();
+            auto typeSizePair = sharedSegment.find<StringVector>(INTERNAL_DATA_STRUCTURE_NAME);
+            auto vector = typeSizePair.first;
+            return vector->empty();
+
+        } catch (boost::interprocess::interprocess_exception & exception) {
+            poco_debugger_msg(exception.what());
+            throw Poco::IllegalStateException("'" + _memorySpaceName + "' does not exist.");
+        }
     }
 
     bool AbstractBuffer::exists()
