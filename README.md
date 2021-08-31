@@ -65,6 +65,17 @@ ConsumerDaemon/         project and make/build files for the ConsumerDaemon modu
         Unit/           source files for the ConsumerDaemon unit tests
         E2E/            source files for the ConsumerDaemon end-to-end tests
 
+Producer/               project and make/build files for the Producer module
+    include/            all header files for the Producer module
+        Adapter/        all Producer module adapters
+        Producer/       all Producer module ports
+    src/                source files for the Producer module
+    test/               project and make/build files for the Producer testsuite
+        Resources/      any supporting files for the tests
+        Integration/    source files for the Producer integration tests
+        Unit/           source files for the Producer unit tests
+        E2E/            source files for the Producer end-to-end tests
+
 ```
 
 ## Running with Docker
