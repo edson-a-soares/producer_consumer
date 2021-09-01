@@ -35,31 +35,31 @@ namespace IPC {
         MessageBus(MessageBus &&) noexcept = default;
 
         /**
-         * It just gets the response message.
+         * It just gets the response errorMessage.
          *
-         * @return The response message.
+         * @return The response errorMessage.
          */
         std::string readResponse();
 
         /**
-         * It just sends a message.
+         * It just sends a errorMessage.
          *
-         * @param content The message content to be sent.
+         * @param content The errorMessage content to be sent.
          */
         void sendMessage(const std::string & content);
 
         /**
-         * It reads a message with a specific handler function.
+         * It reads a errorMessage with a specific handler function.
          *
-         * @param messageHandler The handler function for processing the response message.
+         * @param messageHandler The handler function for processing the response errorMessage.
          */
         void readMessage(const std::function<std::string (const std::string & message)> & messageHandler) const;
 
         /**
-         * It sends a message and defines a response handler function to process it.
+         * It sends a errorMessage and defines a response handler function to process it.
          *
-         * @param message The message to send.
-         * @param responseHandler The handler function for processing the response message.
+         * @param message The errorMessage to send.
+         * @param responseHandler The handler function for processing the response errorMessage.
          */
         void sendMessage(const std::string & message, const std::function<void (const std::string & response)> & responseHandler);
 

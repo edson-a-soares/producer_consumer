@@ -24,7 +24,6 @@ TEST(MessageTest, MessageXmlSerialization)
     ASSERT_EQ(message->attributes().size(), attributes.size());
 
     // It prints the XML payload for visualization.
-    std::cout << std::endl << message->toXml() << std::endl;
-
+    poco_debugger_msg(message->toXml().c_str());
 
 }

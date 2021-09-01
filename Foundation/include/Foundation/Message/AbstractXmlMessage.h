@@ -20,7 +20,8 @@ namespace Message {
         void id(const std::string &);
 
     protected:
-        std::string buildXML();
+        static std::string eraseFormatting(const std::string &);
+        std::string buildXML(const std::string & rootElement = "message");
         void set(const std::string & parent, const std::string & tagName, const std::string & value);
         void set(const std::string & tagName, const std::map<std::string, std::string> & attributes);
         void attributeValue(const std::string & tagName, const std::string & attributeName, const std::string & attributeValue);

@@ -45,8 +45,6 @@ namespace Message {
             std::string _body;
             std::map<std::string, std::string> _attributes;
 
-            static std::string eraseFormatting(const std::string &);
-
     };
 
 

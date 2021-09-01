@@ -1,4 +1,3 @@
-#include <regex>
 #include "Foundation/Message/XMLMessage.h"
 
 namespace Foundation {
@@ -51,11 +50,6 @@ namespace Message {
         return _bodySize;
     }
 
-    std::string XMLMessage::eraseFormatting(const std::string & content)
-    {
-        std::regex expression(">[\\s\r\n]*<");
-        return std::regex_replace(content, expression, "><");
-    }
 
 
 } }

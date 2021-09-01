@@ -12,7 +12,7 @@ namespace IPC {
 
     /**
      * A daemon (or service) is a background process that is designed to runOn autonomously, with little or no user
-     * intervention. This class executes a handler function that keeps listening to the specified message bus.
+     * intervention. This class executes a handler function that keeps listening to the specified errorMessage bus.
      *
      * @see DaemonLoop
      */
@@ -33,7 +33,7 @@ namespace IPC {
         /**
          * It starts the listening.
          *
-         * @param messageBusInformation The information of the message bus the daemon should be listening to.
+         * @param messageBusInformation The information of the errorMessage bus the daemon should be listening to.
          * @param callback The listening function designated to handle the response messages.
          */
         static void startListening(

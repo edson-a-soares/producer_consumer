@@ -29,7 +29,7 @@ bin/                    all executables
 lib/                    all libraries
 data/                   all sort of application supporting files
     source/             source files that will be generated in runtime
-    templates/          templates for the message exchanged between the processes
+    templates/          templates for the messages exchanged between the processes
 
 scripts/                utility scripts for building
 cmake/                  supporting files for CMake
@@ -37,6 +37,8 @@ docs/                   any additional documentation
 
 Foundation/             project and make/build files for the Foundation module
     include/            all header files for the Foundation module
+        Adapter/        all ConsumerDaemon module adapters
+        Foundation/     all ConsumerDaemon module ports
     src/                source files for the Foundation module
     test/               project and make/build files for the Foundation testsuite
         Resources/      any supporting files for the tests
