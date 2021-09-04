@@ -14,11 +14,11 @@ notifications:
       on_failure: always # default: always
 
 before_script:
-  - docker build -t ${TRAVIS_BUILD_DIR}:${TRAVIS_BUILD_NUMBER} . -f Test.Dockerfile
+  - docker build -t producer_consumer:${TRAVIS_BUILD_NUMBER} . -f Test.Dockerfile
 
 script:
   # It runs the tests into the Docker container.
-  - docker run ${TRAVIS_REPO_SLUG}:${TRAVIS_COMMIT} /bin/bash -c "cd /tmp/producer_consumer; ./scripts/run-all-tests.sh"
+  - docker run producer_consumer:${TRAVIS_BUILD_NUMBER} /bin/bash -c "cd /tmp/producer_consumer; ./scripts/run-all-tests.sh"
 
 after_success:
   - docker run -it --workdir /opt/shared --name=docker-environment --rm -v `pwd`:/opt/shared
