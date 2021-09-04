@@ -3,12 +3,12 @@
 
 #include "Poco/Net/HTTPRequest.h"
 #include "Foundation/Foundation.h"
-#include "Foundation/Validation/ValidationInterface.h"
+#include "Foundation/Util/ValidationInterface.h"
 
 namespace Validation {
 
 
-    class API AllowedHttpMethods : public Foundation::Validation::ValidationInterface
+    class API AllowedHttpMethods : public Foundation::Util::ValidationInterface
     {
     public:
         explicit AllowedHttpMethods(Poco::Net::HTTPRequest &);
