@@ -22,6 +22,6 @@ script:
 
 after_success:
   - docker run -it --workdir /opt/shared --name=docker-environment --rm -v `pwd`:/opt/shared
-      ${TRAVIS_REPO_SLUG}:${TRAVIS_COMMIT} /bin/bash
+      producer_consumer:${TRAVIS_COMMIT} /bin/bash
       -c "scripts/build-application.sh; scripts/run-all-tests.sh; scripts/run-gcov-coverage-report.sh"
   - bash <(curl -s https://codecov.io/bash)
