@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/edson-a-soares/producer_consumer.svg?branch=main)](https://travis-ci.org/edson-a-soares/producer_consumer)
+[![Build Status](https://app.travis-ci.com/edson-a-soares/producer_consumer.svg?branch=main)](https://app.travis-ci.com/edson-a-soares/producer_consumer)
 [![codecov](https://codecov.io/gh/edson-a-soares/producer_consumer/branch/main/graph/badge.svg?token=BLDGUUQU8K)](https://codecov.io/gh/edson-a-soares/producer_consumer)
 
 * [Application dependencies](#application-dependencies)
@@ -15,6 +15,7 @@
 - Boost 1.7
 - Poco C++ Libraries 1.9
 - Google Test
+- Google Mock
 - LCOV
 - GCOV
 - Doxygen
@@ -91,7 +92,8 @@ cd /tmp/producer_consumer
 ## Testing
 
 ```bash
-./scripts/run-all-tests.sh
+docker build . -t producer-consumer-test - f Test.Dockerfile
+docker run producer-consumer-test /bin/bash -c "cd /tmp/producer_consumer; ./scripts/run-all-tests.sh"
 ```
 
 ##### Running coverage HTML report
