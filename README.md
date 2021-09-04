@@ -92,7 +92,7 @@ cd /tmp/producer_consumer
 ## Testing
 
 ```bash
-docker build . -t producer-consumer-test - f Test.Dockerfile
+docker build . -t producer-consumer-test -f Test.Dockerfile
 docker run producer-consumer-test /bin/bash -c "cd /tmp/producer_consumer; ./scripts/run-all-tests.sh"
 ```
 
