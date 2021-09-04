@@ -12,7 +12,7 @@ namespace Http {
     class FakeResource : public Foundation::Http::AbstractResource
     {
     protected:
-        std::unique_ptr<ErrorMessageParserInterface> createErrorMessageParser() override;
+        std::unique_ptr<ErrorMessageParserInterface> errorMessageParser() override;
         void handle_get(    Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse &) override;
         void handle_put(    Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse &) override;
         void handle_post(   Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse &) override;
@@ -21,7 +21,7 @@ namespace Http {
     };
 
 
-    std::unique_ptr<ErrorMessageParserInterface> FakeResource::createErrorMessageParser()
+    std::unique_ptr<ErrorMessageParserInterface> FakeResource::errorMessageParser()
     {
         return std::make_unique<EscapedErrorMessageParser>();
     }

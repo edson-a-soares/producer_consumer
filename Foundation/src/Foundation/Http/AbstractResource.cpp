@@ -1,3 +1,4 @@
+#include "Poco/String.h"
 #include "Poco/Exception.h"
 #include "Poco/Net/MediaType.h"
 #include "Foundation/Http/AbstractResource.h"
@@ -67,15 +68,18 @@ namespace Http {
 
     void AbstractResource::dispatchError(Poco::Net::HTTPServerResponse & response, const std::string & message)
     {
-        std::string stringError;
-        auto messageParser = createErrorMessageParser();
+        auto messageParser = errorMessageParser();
+        if (messageParser == nullptr)
+            messageParser = std::make_unique<::Http::DefaultErrorMessageParser>();
+
         auto errorMessage = messageParser->toXml(
             response.getReason(),
             std::to_string(response.getStatus()),
-            message.substr(message.find(':')+1)
+            Poco::trim(message.substr(message.find(':')+1))
         );
 
-        response.sendBuffer(errorMessage.data(), errorMessage.length());
+        auto stringError = Poco::trim(errorMessage);
+        response.sendBuffer(stringError.data(), stringError.length());
     }
 
     void AbstractResource::dispatch(Poco::Net::HTTPServerResponse & response)
@@ -87,9 +91,9 @@ namespace Http {
             response.send().flush();
     }
 
-    std::unique_ptr<ErrorMessageParserInterface> AbstractResource::createErrorMessageParser()
+    std::unique_ptr<ErrorMessageParserInterface> AbstractResource::errorMessageParser()
     {
-        return std::make_unique<::Http::DefaultErrorMessageParser>();
+        return nullptr;
     }
 
     void AbstractResource::handle_get(Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse & response)

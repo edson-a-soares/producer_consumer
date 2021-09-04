@@ -19,7 +19,7 @@ namespace Http {
         void handleRequest(Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse &) override;
 
     protected:
-        virtual std::unique_ptr<ErrorMessageParserInterface> createErrorMessageParser();
+        virtual std::unique_ptr<ErrorMessageParserInterface> errorMessageParser();
         virtual void handle_get(    Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse &);
         virtual void handle_put(    Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse &);
         virtual void handle_post(   Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse &);
