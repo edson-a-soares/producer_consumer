@@ -61,6 +61,10 @@ set(APPLICATION_CONFIG_DIRECTORY  ${CMAKE_INSTALL_PREFIX}/etc/${APPLICATION_INST
 set(APPLICATION_LIBRARY_DIRECTORY ${CMAKE_INSTALL_PREFIX}/lib/${APPLICATION_INSTALLATION_DIRECTORY_NAME})
 set(APPLICATION_SHARE_DIRECTORY   ${CMAKE_INSTALL_PREFIX}/share/${APPLICATION_INSTALLATION_DIRECTORY_NAME})
 
+# Tell CMake to add the application library directory to LD_LIBRARY_PATH
+set(CMAKE_INSTALL_RPATH ${APPLICATION_LIBRARY_DIRECTORY})
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
 #-----------------------------------------------------------------------------
 # Application optional features
 #-----------------------------------------------------------------------------
