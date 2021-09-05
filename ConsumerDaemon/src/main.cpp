@@ -1,7 +1,7 @@
 #include <iostream>
 #include "ConsumerDaemon/Application.h"
 
-int main (int argc, char * argv[])
+int main (int, char * argv[])
 {
     using namespace ConsumerDaemon;
 
