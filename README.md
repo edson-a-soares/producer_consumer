@@ -78,15 +78,15 @@ Producer/               project and make/build files for the Producer module
         Integration/    source files for the Producer integration tests
         Unit/           source files for the Producer unit tests
         E2E/            source files for the Producer end-to-end tests
-
 ```
 
 ## Running with Docker
 
 ```bash
 docker build . -t producer-consumer
-docker run -it producer-consumer /bin/bash
-cd /tmp/producer_consumer
+docker run --name producer-consumer -p8080:80 -d producer-consumer
+docker exec -it producer-consumer /bin/bash
+docker stop producer-consumer
 ```
 
 ## Testing
