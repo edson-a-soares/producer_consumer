@@ -8,6 +8,7 @@ namespace Http {
 
     void RouterEntrypoint::loadEndpoints()
     {
+        commonPathPrefix("/consumer");
         addEndpoint("/daemon_loop", "Consumer::Http::ConsumerDaemonResource");
     }
 

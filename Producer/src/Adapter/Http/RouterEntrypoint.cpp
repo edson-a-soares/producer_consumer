@@ -8,6 +8,7 @@ namespace Http {
 
     void RouterEntrypoint::loadEndpoints()
     {
+        commonPathPrefix("/producer");
         addEndpoint("/message", "Producer::Http::MessageResource");
     }
 

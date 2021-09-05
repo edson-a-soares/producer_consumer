@@ -1,6 +1,8 @@
 #ifndef Validation_AcceptedHttpContentTypeHeaders_INCLUDED
 #define Validation_AcceptedHttpContentTypeHeaders_INCLUDED
 
+#include <vector>
+#include <string>
 #include "Poco/Net/HTTPRequest.h"
 #include "Foundation/Foundation.h"
 #include "Foundation/Util/ValidationInterface.h"
@@ -17,7 +19,7 @@ namespace Validation {
 
     private:
         Poco::Net::HTTPRequest & _request;
-        const std::string HTTP_CONTENT_TYPE;
+        std::vector<std::string> contentTypes;
 
     };
 

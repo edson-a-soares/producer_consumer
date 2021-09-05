@@ -1,22 +1,21 @@
 #include "Adapter/Validation/AcceptedHttpContentTypeHeaders.h"
 
-
 namespace Validation {
 
 
     AcceptedHttpContentTypeHeaders::AcceptedHttpContentTypeHeaders(Poco::Net::HTTPRequest & request)
         : _request(request),
-          HTTP_CONTENT_TYPE("application/xml")
+          contentTypes { "application/xml", "text/html" }
     {}
 
     bool AcceptedHttpContentTypeHeaders::isValid()
     {
-        return _request.getContentType() == HTTP_CONTENT_TYPE;
+        return std::count(contentTypes.begin(), contentTypes.end(), _request.getContentType());
     }
 
     std::string AcceptedHttpContentTypeHeaders::errorMessage() const
     {
-        return "The only Content Type supported is " + HTTP_CONTENT_TYPE;
+        return "Content Type supported is not supported: " + _request.getContentType();
     }
 
 

@@ -23,5 +23,5 @@ LoadModule poco_module /usr/lib/apache2/modules/mod_poco.so
 #
 # Defining which modules will respond which requests.
 #################################################################
-AddPocoRequestHandler Consumer::Http::RouterEntrypoint /usr/local/lib/producer_consumer/IPC_Consumer.so /
-AddPocoRequestHandler Producer::Http::RouterEntrypoint /usr/local/lib/producer_consumer/IPC_Producer.so /
+AddPocoRequestHandler Consumer::Http::RouterEntrypoint /usr/local/lib/producer_consumer/IPC_Consumer.so /consumer
+AddPocoRequestHandler Producer::Http::RouterEntrypoint /usr/local/lib/producer_consumer/IPC_Producer.so /producer

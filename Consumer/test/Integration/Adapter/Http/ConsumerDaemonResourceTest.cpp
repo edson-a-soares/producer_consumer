@@ -114,7 +114,7 @@ TEST_F(ConsumerDaemonResourceTest, POST_then_DELETE_With_Success)
 
         EXPECT_THAT(
             stopResponse.getStatus(),
-            AnyOf(Poco::Net::HTTPResponse::HTTP_ACCEPTED, Poco::Net::HTTPResponse::HTTP_ACCEPTED)
+            AnyOf(Poco::Net::HTTPResponse::HTTP_ACCEPTED, Poco::Net::HTTPResponse::HTTP_NO_CONTENT)
         );
     }
 

@@ -42,9 +42,15 @@ namespace Http {
 	    return route;
     }
 
+    void Router::commonPathPrefix(const std::string & path)
+    {
+        _pathPrefix = path;
+    }
+
     void Router::addEndpoint(const std::string & path, const std::string & resourceFactoryName)
     {
-        routingTable[path] = resourceFactoryName;
+        auto key = _pathPrefix.empty() ? path : _pathPrefix + path;
+        routingTable[key] = resourceFactoryName;
     }
 
 
