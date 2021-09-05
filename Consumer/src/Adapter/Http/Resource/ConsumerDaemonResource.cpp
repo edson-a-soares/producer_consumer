@@ -1,6 +1,7 @@
 #include "Poco/URI.h"
 #include "Poco/Exception.h"
 #include "Poco/StreamCopier.h"
+#include "Foundation/Util/Path.h"
 #include "Foundation/IO/Console.h"
 #include "boost/process/child.hpp"
 #include "boost/filesystem/path.hpp"
@@ -20,7 +21,10 @@ namespace Http {
         std::string daemonChannel;
         std::vector<std::string> daemonPIDs;
         std::istream & inputStream = request.stream();
-        std::vector<boost::filesystem::path> paths = { boost::filesystem::current_path().string() };
+        std::vector<boost::filesystem::path> paths = {
+            Util::Path::APPLICATION_BINARY_DIRECTORY_PATH,
+            boost::filesystem::current_path().string()
+        };
 
         Poco::StreamCopier::copyToString(inputStream, requestBody);
         if (!requestBody.empty())
@@ -38,8 +42,8 @@ namespace Http {
             daemon.detach();
 
             daemonPIDs = IO::Console::readRunningPidOf(System::Application::CONSUMER_DAEMON_BINARY_NAME);
-            if (daemonPIDs.empty()) {
-                response.setStatus(Poco::Net::HTTPResponse::HTTP_INTERNAL_SERVER_ERROR);
+            if (!daemonPIDs.empty()) {
+                response.setStatus(Poco::Net::HTTPResponse::HTTP_NO_CONTENT);
                 return;
             }
 
@@ -47,7 +51,7 @@ namespace Http {
             response.setStatus(Poco::Net::HTTPResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        response.setStatus(Poco::Net::HTTPResponse::HTTP_NO_CONTENT);
+        response.setStatus(Poco::Net::HTTPResponse::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     void ConsumerDaemonResource::handle_get(Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse & response)
@@ -59,12 +63,16 @@ namespace Http {
                 System::Application::CONSUMER_DAEMON_BINARY_NAME
                 );
 
-            if (daemonPIDs.empty())
+            if (daemonPIDs.empty()) {
                 response.setStatus(Poco::Net::HTTPResponse::HTTP_NOT_FOUND);
+                return;
+            }
 
         } catch (...) {
             response.setStatus(Poco::Net::HTTPResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
+
+        response.setStatus(Poco::Net::HTTPResponse::HTTP_NO_CONTENT);
     }
 
     void ConsumerDaemonResource::handle_delete(Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse & response)

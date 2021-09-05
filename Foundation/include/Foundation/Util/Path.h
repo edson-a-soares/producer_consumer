@@ -17,6 +17,9 @@ namespace Util {
         const static std::string APPLICATION_HOME_DIRECTORY_PATH;
             /// Application directory installation (default.: /usr/local).
 
+        const static std::string APPLICATION_BINARY_DIRECTORY_PATH;
+            /// Application directory installation (default.: /usr/local/bin).
+
         static std::string addSeparatorTo(const std::string & path);
 
     };

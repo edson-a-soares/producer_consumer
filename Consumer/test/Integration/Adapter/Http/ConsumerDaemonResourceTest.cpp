@@ -15,8 +15,8 @@ public:
 
 protected:
     const std::string TEST_ADDRESS  = "127.0.0.1";
-    const std::string TEST_ENDPOINT = "/daemon_loop";
     const std::string CONTENT_TYPE  = "application/xml";
+    const std::string TEST_ENDPOINT = "/consumer/daemon_loop";
 
 };
 

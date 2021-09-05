@@ -87,7 +87,7 @@ namespace CLI {
                 std::cout << "Stopping the process ID " << daemonPIDs.back() << "." << std::endl;
                 kill(std::stoi(daemonPIDs.back()), SIGINT);
 
-                daemonPIDs.pop_back();
+                daemonPIDs = Console::readRunningPidOf(Application::CONSUMER_DAEMON_BINARY_NAME);
             }
 
             daemonPIDs = Console::readRunningPidOf(Application::CONSUMER_DAEMON_BINARY_NAME);

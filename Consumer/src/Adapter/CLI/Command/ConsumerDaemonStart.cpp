@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <getopt.h>
 #include <iostream>
+#include "Foundation/Util/Path.h"
 #include "Adapter/CLI/Commands.h"
 #include "Foundation/IO/Console.h"
 #include "boost/process/child.hpp"
@@ -86,6 +87,7 @@ namespace CLI {
 
     int ConsumerDaemonStart::execute(int argCounter, char * argVector[])
     {
+        using namespace Foundation;
         using namespace Foundation::IO;
         using namespace Foundation::System;
 
@@ -93,7 +95,8 @@ namespace CLI {
         try {
             std::vector<std::string> daemonPIDs = {};
             std::vector<boost::filesystem::path> paths = {
-                boost::filesystem::path("bin")
+                Util::Path::APPLICATION_BINARY_DIRECTORY_PATH,
+                boost::filesystem::current_path().string()
             };
 
             daemonPIDs = Console::readRunningPidOf(Application::CONSUMER_DAEMON_BINARY_NAME);
