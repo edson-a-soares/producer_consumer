@@ -19,7 +19,7 @@ namespace Http {
     };
 
 
-    void EscapedNotFoundErrorHandler::handleRequest(Poco::Net::HTTPServerRequest & request, Poco::Net::HTTPServerResponse & response)
+    void EscapedNotFoundErrorHandler::handleRequest(Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse & response)
     {
         response.setContentType("application/xml");
         response.setStatus(Poco::Net::HTTPResponse::HTTP_NOT_FOUND);
