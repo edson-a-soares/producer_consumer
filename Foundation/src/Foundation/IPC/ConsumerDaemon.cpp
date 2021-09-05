@@ -9,12 +9,16 @@ namespace IPC {
 
     void ConsumerDaemon::startListening(
         std::unique_ptr<MessageBusChannelInterface> messageBusInformation,
-        const std::function<std::string (const std::string & message)> & callback)
+        const std::function<std::string (const std::string & message)> & callback,
+        bool cleanOnStop)
     {
         auto messageBus = MessageBus::Factory::create(std::move(messageBusInformation));
         DaemonLoop::instance().runWith([=]() {
             messageBus->readMessage(callback);
         });
+
+        if (cleanOnStop)
+            messageBus->destroyChannels();
     }
 
     bool ConsumerDaemon::isListening()

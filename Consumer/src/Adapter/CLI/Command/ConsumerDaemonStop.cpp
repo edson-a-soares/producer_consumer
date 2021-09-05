@@ -13,7 +13,8 @@ namespace CLI {
 
 
     ConsumerDaemonStop::ConsumerDaemonStop()
-        : status(EXIT_SUCCESS)
+        : forceStop(false),
+          status(EXIT_SUCCESS)
     {}
 
     void ConsumerDaemonStop::showHelp()
@@ -21,21 +22,23 @@ namespace CLI {
         using namespace Foundation::System;
 
         std::cout << "How to: " << Application::CONSUMER_CLI_BINARY_NAME << " " << Commands::CONSUMER_DAEMON_STOP << " [option]\n"
-            "It stops the " << Application::CONSUMER_DAEMON_BINARY_NAME << ".\n";
+            "It stops the " << Application::CONSUMER_DAEMON_BINARY_NAME << ".\n" << std::endl;;
     }
 
     void ConsumerDaemonStop::showArgumentsHelp()
     {
         std::cout << "available options: \n"
+            "    -f, --force        It kills the daemon process immediately.\n"
             "    -h, --help         It shows help.\n"
         "\n";
     }
 
     void ConsumerDaemonStop::init(int argCounter, char * argVector[])
     {
-        const char * shortOptions = "h";
+        const char * shortOptions = "f:h";
         const struct option longOptions[] =
         {
+            { "force",              no_argument,       nullptr, 'f' },
             { "help",               no_argument,       nullptr, 'h' },
             { nullptr,              0,         nullptr, 0   },
         };
@@ -57,6 +60,15 @@ namespace CLI {
                     showHelp();
                     showArgumentsHelp();
                     exit(EXIT_FAILURE);
+
+                case 'f':
+                    if ( optarg == nullptr ) {
+                        fprintf(stderr, "%s is an invalid value for the option -%c\n", optarg, optionIndex);
+                        fprintf(stderr, "Try `%s --help' for more information.\n\n", argVector[0]);
+                        exit(EXIT_FAILURE);
+                    }
+                    forceStop = true;
+                    break;
 
                 default:
                     fprintf(stderr, "%s: invalid option --%c\n", argVector[0], optionIndex);
@@ -86,9 +98,11 @@ namespace CLI {
             while (!daemonPIDs.empty()) {
                 std::cout << "Stopping the process ID " << daemonPIDs.back() << "." << std::endl;
                 kill(std::stoi(daemonPIDs.back()), SIGINT);
-
-                daemonPIDs = Console::readRunningPidOf(Application::CONSUMER_DAEMON_BINARY_NAME);
+                daemonPIDs.pop_back();
             }
+
+            if (forceStop)
+                kill(std::stoi(daemonPIDs.back()), SIGKILL);
 
             daemonPIDs = Console::readRunningPidOf(Application::CONSUMER_DAEMON_BINARY_NAME);
             if (daemonPIDs.empty())

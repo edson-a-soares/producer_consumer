@@ -35,10 +35,12 @@ namespace IPC {
          *
          * @param messageBusInformation The information of the errorMessage bus the daemon should be listening to.
          * @param callback The listening function designated to handle the response messages.
+         * @param cleanOnStop Do the channels cleaning immediately after stopping the loop.
          */
         static void startListening(
             std::unique_ptr<MessageBusChannelInterface> messageBusInformation,
-            const std::function<std::string (const std::string & message)> & callback);
+            const std::function<std::string (const std::string & message)> & callback,
+            bool cleanOnStop = false);
 
     };
 

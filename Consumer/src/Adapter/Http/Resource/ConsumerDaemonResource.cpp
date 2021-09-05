@@ -102,7 +102,7 @@ namespace Http {
             response.setStatus(Poco::Net::HTTPResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        response.setStatus(Poco::Net::HTTPResponse::HTTP_NO_CONTENT);
+        response.setStatus(Poco::Net::HTTPResponse::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     void ConsumerDaemonResource::handle_options(Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse & response)

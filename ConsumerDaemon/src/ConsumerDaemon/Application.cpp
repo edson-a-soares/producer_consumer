@@ -8,7 +8,7 @@ namespace ConsumerDaemon {
 
 
     void _signalHandler(int signal){
-        if (signal != SIGTERM)
+        if (signal != SIGINT)
             return;
 
         Foundation::IPC::ConsumerDaemon::stopListening();
@@ -25,7 +25,7 @@ namespace ConsumerDaemon {
 
         // It keeps the process alive even while waiting for data to process.
         if (keepAlive) {
-            signal(SIGTERM, _signalHandler);
+            signal(SIGINT, _signalHandler);
             while (Foundation::IPC::ConsumerDaemon::isListening());
         }
     }

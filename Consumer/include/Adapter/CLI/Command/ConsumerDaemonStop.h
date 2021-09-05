@@ -18,6 +18,7 @@ namespace CLI {
         int execute(int, char * []) override;
 
     private:
+        bool forceStop;
         int status;
 
     };
