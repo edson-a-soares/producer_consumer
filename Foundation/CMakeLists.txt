@@ -70,7 +70,7 @@ set(DEPENDENCIES_LIBS ${DEPENDENCIES_LIBS} ${Boost_Locale} ${Boost_System} ${Boo
 #-----------------------------------------------------------------------------
 find_package(Threads REQUIRED)
 
-# it links the dependencies to the application
+# It links the dependencies to the application
 target_link_libraries(${COMPONENT_BINARY_NAME} ${DEPENDENCIES_LIBS} -lpthread -lrt)
 
 #-----------------------------------------------------------------------------
@@ -82,3 +82,8 @@ if (ENABLE_TESTS)
 elseif ()
     message(STATUS "Building ${COMPONENT_NAME} without tests")
 endif ()
+
+#-----------------------------------------------------------------------------
+# Handle component installation
+#-----------------------------------------------------------------------------
+install(TARGETS ${COMPONENT_BINARY_NAME} DESTINATION ${APPLICATION_LIBRARY_DIRECTORY})

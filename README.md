@@ -12,7 +12,7 @@
 
 - CMake 3.7 or newer
 - A C++14 compiler (GCC 6.3 or newer)
-- Boost 1.7
+- Boost 1.70.0
 - Poco C++ Libraries 1.9
 - Google Test
 - Google Mock

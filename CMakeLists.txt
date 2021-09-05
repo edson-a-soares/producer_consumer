@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.7)
 
-project(ProducerConsumer)
+project(Producer_Consumer)
 
 set(CMAKE_C_COMPILER /usr/bin/gcc)
 set(CMAKE_CXX_COMPILER /usr/bin/g++)
@@ -32,7 +32,7 @@ set(CMAKE_SHARED_LIBRARY_PREFIX "")
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 
 # Application's modules prefix
-set(APPLICATION_MODULE_PREFIX ProducerConsumer)
+set(APPLICATION_MODULE_PREFIX IPC)
 
 #-----------------------------------------------------------------------------
 # Put the libaries and binaries built into directories at the
@@ -42,6 +42,24 @@ set(APPLICATION_MODULE_PREFIX ProducerConsumer)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_HOME_DIRECTORY}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_HOME_DIRECTORY}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_HOME_DIRECTORY}/bin)
+
+#-----------------------------------------------------------------------------
+# It defines the structure of the application after installation
+#
+#   - /usr/local/bin/                                   executable binaries (i.e., Consumer_Management, ConsumerDaemon)
+#   - /usr/local/lib/[  application directory name]/    all library binary files
+#   - /usr/local/etc/[  application directory name]/    system configurations for local binaries
+#   - /usr/local/share/[application directory name]/    local architecture-independent hierarchy files (i.e., XML files)
+#
+#-----------------------------------------------------------------------------
+
+# It defines the application's installation root directory name from the configuration file
+string(TOLOWER ${CMAKE_PROJECT_NAME} APPLICATION_INSTALLATION_DIRECTORY_NAME)
+
+set(APPLICATION_BINARY_DIRECTORY  ${CMAKE_INSTALL_PREFIX}/bin)
+set(APPLICATION_CONFIG_DIRECTORY  ${CMAKE_INSTALL_PREFIX}/etc/${APPLICATION_INSTALLATION_DIRECTORY_NAME})
+set(APPLICATION_LIBRARY_DIRECTORY ${CMAKE_INSTALL_PREFIX}/lib/${APPLICATION_INSTALLATION_DIRECTORY_NAME})
+set(APPLICATION_SHARE_DIRECTORY   ${CMAKE_INSTALL_PREFIX}/share/${APPLICATION_INSTALLATION_DIRECTORY_NAME})
 
 #-----------------------------------------------------------------------------
 # Application optional features
@@ -61,3 +79,8 @@ add_subdirectory(Producer)
 # It configures documentation
 #-----------------------------------------------------------------------------
 include(DocumentationSettings)
+
+#-----------------------------------------------------------------------------
+# Configuration and supporting files installation
+#-----------------------------------------------------------------------------
+include(ConfigFilesInstallation)

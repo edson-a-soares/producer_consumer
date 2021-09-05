@@ -43,12 +43,16 @@ target_link_libraries(${COMPONENT_BINARY_NAME} ${DEPENDENCIES_LIBS} -lpthread -l
 if (ENABLE_TESTS)
     add_subdirectory(test)
     message(STATUS "Building ${COMPONENT_NAME} with tests")
-
 elseif ()
     message(STATUS "Building ${COMPONENT_NAME} without tests")
-
 endif ()
 
 set(CONSUMER_CLI_EXECUTABLE_NAME ConsumerManagement)
 add_executable(${CONSUMER_CLI_EXECUTABLE_NAME} ${CONSUMER_SOURCE_FILES})
 target_link_libraries(${CONSUMER_CLI_EXECUTABLE_NAME} ${COMPONENT_BINARY_NAME})
+
+#-----------------------------------------------------------------------------
+# Handle component installation
+#-----------------------------------------------------------------------------
+install(TARGETS ${COMPONENT_BINARY_NAME} DESTINATION ${APPLICATION_LIBRARY_DIRECTORY})
+install(TARGETS ${CONSUMER_CLI_EXECUTABLE_NAME} DESTINATION ${APPLICATION_BINARY_DIRECTORY})

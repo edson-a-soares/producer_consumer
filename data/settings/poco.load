@@ -1,0 +1,27 @@
+#################################################################
+# Load the application dependencies for Apache poco_module.
+#################################################################
+LoadFile /usr/local/lib/libPocoFoundation.so
+LoadFile /usr/local/lib/libPocoXML.so
+LoadFile /usr/local/lib/libPocoJSON.so
+LoadFile /usr/local/lib/libPocoUtil.so
+LoadFile /usr/local/lib/libPocoNet.so
+LoadFile /usr/local/lib/libboost_locale.so.1.70.0
+
+#################################################################
+# Load the application binaries for Apache poco_module.
+#################################################################
+LoadFile /usr/local/lib/producer_consumer/IPC_Foundation.so
+
+#################################################################
+# Load the Apache poco_module binary.
+#################################################################
+LoadModule poco_module /usr/lib/apache2/modules/mod_poco.so
+
+#################################################################
+# Configure the application to run over Apache.
+#
+# Defining which modules will respond which requests.
+#################################################################
+AddPocoRequestHandler Consumer::Http::RouterEntrypoint /usr/local/lib/producer_consumer/IPC_Consumer.so /
+AddPocoRequestHandler Producer::Http::RouterEntrypoint /usr/local/lib/producer_consumer/IPC_Producer.so /

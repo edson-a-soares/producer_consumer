@@ -43,12 +43,16 @@ target_link_libraries(${COMPONENT_BINARY_NAME} ${DEPENDENCIES_LIBS})
 if (ENABLE_TESTS)
     add_subdirectory(test)
     message(STATUS "Building ${COMPONENT_NAME} with tests")
-
 elseif ()
     message(STATUS "Building ${COMPONENT_NAME} without tests")
-
 endif ()
 
 set(CONSUMER_DAEMON_CLI_EXECUTABLE_NAME ConsumerDaemon)
 add_executable(${CONSUMER_DAEMON_CLI_EXECUTABLE_NAME} ${CONSUMER_DAEMON_SOURCE_FILES})
 target_link_libraries(${CONSUMER_DAEMON_CLI_EXECUTABLE_NAME} ${COMPONENT_BINARY_NAME})
+
+#-----------------------------------------------------------------------------
+# Handle component installation
+#-----------------------------------------------------------------------------
+install(TARGETS ${COMPONENT_BINARY_NAME} DESTINATION ${APPLICATION_LIBRARY_DIRECTORY})
+install(TARGETS ${CONSUMER_DAEMON_CLI_EXECUTABLE_NAME} DESTINATION ${APPLICATION_BINARY_DIRECTORY})

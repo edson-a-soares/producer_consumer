@@ -37,13 +37,17 @@ set(DEPENDENCIES_LIBS ${DEPENDENCIES_LIBS} ${POCO_FOUNDATION} ${POCO_UTIL} ${POC
 # Threads
 find_package(Threads REQUIRED)
 
-# it links the dependencies to the application
+# It links the dependencies to the application
 target_link_libraries(${COMPONENT_BINARY_NAME} ${DEPENDENCIES_LIBS})
 
 if (ENABLE_TESTS)
     add_subdirectory(test)
     message(STATUS "Building ${COMPONENT_NAME} with tests")
-
 elseif ()
     message(STATUS "Building ${COMPONENT_NAME} without tests")
 endif ()
+
+#-----------------------------------------------------------------------------
+# Handle component installation
+#-----------------------------------------------------------------------------
+install(TARGETS ${COMPONENT_BINARY_NAME} DESTINATION ${APPLICATION_LIBRARY_DIRECTORY})

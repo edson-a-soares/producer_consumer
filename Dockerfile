@@ -1,26 +1,15 @@
-FROM edsonsoares/poco:1.9-debian
+FROM edsonsoares/boost_poco
 
 ENV DEBIAN_FRONTEND noninteractive
-
-ENV BOOST_DOWNLOAD_URL https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.gz
-ENV BOOST_SHA256 882b48708d211a5f48e60b0124cf5863c1534cd544ecd0664bb534a4b5d506e9
-
-# Download and install Boost 1.7
-RUN curl -fsSL "${BOOST_DOWNLOAD_URL}" -o /tmp/boost_1_70_0.tar.gz \
-    && echo "$BOOST_SHA256  /tmp/boost_1_70_0.tar.gz" | sha256sum -c - \
-    && tar --directory /tmp -xzf /tmp/boost_1_70_0.tar.gz \
-    && cd /tmp/boost_1_70_0 && ./bootstrap.sh --with-libraries=program_options,system,locale,filesystem,chrono,thread \
-    && ./b2 --link=shared --runtime-link=shared --variant=release \
-    && ./b2 install \
-    && rm -rf /tmp/boost_1_70_0 /tmp/boost_1_70_0.tar.gz
 
 # Install most basic application dependencies
 RUN apt-get update -qq \
     && dpkg --add-architecture i386 \
     && apt-get update \
 	&& apt-get install -yq --no-install-recommends \
+	    doxygen \
 	    gcovr \
-		# Google Tests
+        google-mock \
 		libgtest-dev
 
 # It compiles and makes available (install) Google Test
@@ -35,6 +24,17 @@ RUN cd /tmp/producer_consumer \
     && cd cmake-build \
     && cmake .. \
         -DENABLE_TESTS=ON \
-        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE:-Debug} \
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE:-Release} \
     && cd /tmp/producer_consumer \
-    && cmake --build cmake-build
+    && cmake --build cmake-build \
+    && cd cmake-build && make install
+
+# Add the Apache Connector file configuration file to the image
+COPY data/settings/poco.load /etc/apache2/mods-available/poco.load
+
+ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
+RUN a2enmod poco && /usr/sbin/apache2ctl restart
+
+EXPOSE 80
+CMD ["/usr/sbin/apachectl", "-DFOREGROUND"]
