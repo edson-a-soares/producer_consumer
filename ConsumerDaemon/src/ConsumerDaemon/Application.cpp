@@ -1,10 +1,18 @@
+#include <csignal>
 #include "ConsumerDaemon/Application.h"
 #include "Foundation/IPC/ConsumerDaemon.h"
-#include "ConsumerDaemon/DefaultChannelWithXMLMessageHandlerFactory.h"
 #include "ConsumerDaemon/MainChannelWithXMLMessageHandlerFactory.h"
+#include "ConsumerDaemon/DefaultChannelWithXMLMessageHandlerFactory.h"
 
 namespace ConsumerDaemon {
 
+
+    void _signalHandler(int signal){
+        if (signal != SIGTERM)
+            return;
+
+        Foundation::IPC::ConsumerDaemon::stopListening();
+    }
 
     void Application::runOn(ChannelOption option, bool keepAlive)
     {
@@ -16,8 +24,10 @@ namespace ConsumerDaemon {
         );
 
         // It keeps the process alive even while waiting for data to process.
-        if (keepAlive)
-            while(Foundation::IPC::ConsumerDaemon::isListening());
+        if (keepAlive) {
+            signal(SIGTERM, _signalHandler);
+            while (Foundation::IPC::ConsumerDaemon::isListening());
+        }
     }
 
     std::unique_ptr<MessageBusChannelHandlerFactoryInterface> Application::createMessageBusChannelHandler(ChannelOption option)
