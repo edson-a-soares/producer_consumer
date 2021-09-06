@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <getopt.h>
 #include <iostream>
+#include <Poco/Exception.h>
 #include "Foundation/Util/Path.h"
 #include "Adapter/CLI/Commands.h"
 #include "Foundation/IO/Console.h"
@@ -94,23 +95,27 @@ namespace CLI {
         init(argCounter, argVector);
         try {
             std::vector<std::string> daemonPIDs = {};
-            std::vector<boost::filesystem::path> paths = {
-                Util::Path::APPLICATION_BINARY_DIRECTORY_PATH,
-                boost::filesystem::current_path().string()
-            };
-
             daemonPIDs = Console::readRunningPidOf(Application::CONSUMER_DAEMON_BINARY_NAME);
             if (!daemonPIDs.empty()) {
                 std::cout << "It is already running." << std::endl;
                 return status;
             }
 
+            std::vector<boost::filesystem::path> paths = {
+                Util::Path::APPLICATION_BINARY_DIRECTORY_PATH,
+                Util::Path::addDirectoryTo(Util::Path::APPLICATION_HOME_DIRECTORY_PATH, "bin")
+            };
+
             auto consumerDaemon = boost::process::search_path(Application::CONSUMER_DAEMON_BINARY_NAME, paths);
+            if (!exists(consumerDaemon)) {
+                std::cout << Application::CONSUMER_DAEMON_BINARY_NAME << " not found in the path." << std::endl;
+                return EXIT_FAILURE;
+            }
+
             boost::process::child daemon(consumerDaemon, daemonChannel);
             daemon.detach();
 
-            daemonPIDs = Console::readRunningPidOf(Application::CONSUMER_DAEMON_BINARY_NAME);
-            if (!daemonPIDs.empty())
+            if (daemon.valid() && daemon.running())
                 std::cout << "Ok. It is running." << std::endl;
 
         } catch (...) {

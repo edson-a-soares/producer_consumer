@@ -22,5 +22,13 @@ namespace Util {
         return path + "/";
     }
 
+    std::string Path::addDirectoryTo(const std::string & path, const std::string & directory)
+    {
+        if (path.back() != '/')
+            return addSeparatorTo(path) + directory;
+
+        return path + directory;
+    }
+
 
 } }

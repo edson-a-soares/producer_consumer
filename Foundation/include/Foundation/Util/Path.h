@@ -21,6 +21,7 @@ namespace Util {
             /// Application directory installation (default.: /usr/local/bin).
 
         static std::string addSeparatorTo(const std::string & path);
+        static std::string addDirectoryTo(const std::string & path, const std::string & directory);
 
     };
 

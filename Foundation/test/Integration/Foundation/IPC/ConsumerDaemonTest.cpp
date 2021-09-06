@@ -8,12 +8,13 @@ TEST(ConsumerDaemonTest, SingleProcessExchangeLoopMonitoring)
 {
     using namespace Foundation::IPC;
 
-    ASSERT_NO_THROW(ConsumerDaemon::startListening(
-            std::make_unique<DefaultMessageBusChannel>(),
-            [](const std::string & message) -> std::string {
-                return message + " was handled by the callback!!";
-            })
-        );
+    auto handler = [](const std::string & message) -> std::string {
+        return message + " was handled by the callback!!";
+    };
+
+    ASSERT_NO_THROW(
+        ConsumerDaemon::startListening(std::make_unique<DefaultMessageBusChannel>(), handler)
+    );
 
     ASSERT_TRUE(ConsumerDaemon::isListening());
 
@@ -29,34 +30,34 @@ TEST(ConsumerDaemonTest, SingleProcessExchangeLoopMonitoring)
     ASSERT_NO_THROW(ConsumerDaemon::stopListening());
 }
 
-TEST(ConsumerDaemonTest, SingleProcessExchangeWithLoopMonitoringAlternativeHandlerVersion)
+TEST(ConsumerDaemonTest, SingleProcessExchangeWithMessageResponseHandler)
 {
     using namespace Foundation::IPC;
 
-    ASSERT_NO_THROW(ConsumerDaemon::startListening(
-            std::make_unique<DefaultMessageBusChannel>(),
-            [](const std::string & message) -> std::string {
-                return message + " was handled the callback!!";
-            })
-        );
+    auto handler = [](const std::string & message) -> std::string {
+        return message + " was handled by the callback!!";
+    };
+
+    ASSERT_NO_THROW(
+        ConsumerDaemon::startListening(std::make_unique<DefaultMessageBusChannel>(), handler)
+    );
 
     ASSERT_TRUE(ConsumerDaemon::isListening());
 
+    bool success = false;
     std::string message  = "Content";
-    bool successfullyHandled = false;
-    std::string expectedResponse = message + " was handled the callback!!";
+    std::string expectedResponse = message + " was handled by the callback!!";
 
     auto messageBus = MessageBus::Factory::createClient(std::make_unique<DefaultMessageBusChannel>());
     for (int i = 0; i < 500; i++) {
-        ASSERT_NO_THROW(messageBus->sendMessage(
-                message,
-                [=, &successfullyHandled](const std::string & actualResponse) {
-                    successfullyHandled = actualResponse == expectedResponse;
+        ASSERT_NO_THROW(
+            messageBus->sendMessage(message,
+                [=, &success](const std::string & response) {
+                    success = (response == expectedResponse);
                 }
             ));
 
-        ASSERT_TRUE(successfullyHandled);
-
+        ASSERT_TRUE(success);
     }
 
     ASSERT_NO_THROW(ConsumerDaemon::stopListening());

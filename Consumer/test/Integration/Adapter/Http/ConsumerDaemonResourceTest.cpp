@@ -46,80 +46,6 @@ TEST_F(ConsumerDaemonResourceTest, GET_With_NOT_FOUND)
 
 }
 
-TEST_F(ConsumerDaemonResourceTest, DELETE_With_NOT_FOUND)
-{
-    using namespace Poco::Net;
-
-    ServerSocket serverSocket(0);
-    auto httpParameters = new Poco::Net::HTTPServerParams();
-    httpParameters->setKeepAlive(false);
-
-    HTTPServer httpServer(new Consumer::Http::RouterEntrypoint(), serverSocket, httpParameters);
-    httpServer.start();
-
-    HTTPClientSession clientSession(TEST_ADDRESS, serverSocket.address().port());
-    HTTPRequest request(Poco::Net::HTTPRequest::HTTP_DELETE, TEST_ENDPOINT);
-
-    request.setContentType(CONTENT_TYPE);
-    clientSession.sendRequest(request);
-
-    HTTPResponse response;
-    clientSession.receiveResponse(response);
-
-    ASSERT_EQ(CONTENT_TYPE, response.getContentType());
-    ASSERT_EQ(Poco::Net::HTTPResponse::HTTP_NOT_FOUND, response.getStatus());
-    ASSERT_EQ(Poco::Net::HTTPMessage::UNKNOWN_CONTENT_LENGTH, response.getContentLength());
-
-}
-
-TEST_F(ConsumerDaemonResourceTest, POST_then_DELETE_With_Success)
-{
-    using namespace Poco::Net;
-
-    ServerSocket serverSocket(0);
-    auto httpParameters = new Poco::Net::HTTPServerParams();
-    httpParameters->setKeepAlive(false);
-
-    HTTPServer httpServer(new Consumer::Http::RouterEntrypoint(), serverSocket, httpParameters);
-    httpServer.start();
-
-    HTTPClientSession clientSession(TEST_ADDRESS, serverSocket.address().port());
-    HTTPRequest request(Poco::Net::HTTPRequest::HTTP_POST, TEST_ENDPOINT);
-
-    std::string requestData = "daemon_channel=default";
-
-    request.setContentType(CONTENT_TYPE);
-    request.setContentLength((int) requestData.length());
-    clientSession.sendRequest(request) << requestData;
-
-    HTTPResponse response;
-    clientSession.receiveResponse(response);
-
-    ASSERT_EQ(CONTENT_TYPE, response.getContentType());
-    ASSERT_EQ(Poco::Net::HTTPResponse::HTTP_NO_CONTENT, response.getStatus());
-    ASSERT_EQ(Poco::Net::HTTPMessage::UNKNOWN_CONTENT_LENGTH, response.getContentLength());
-
-    Poco::Thread::sleep(2000);
-    {
-        using ::testing::AnyOf;
-
-        // It stops the daemon that was started.
-        HTTPRequest stopRequest(Poco::Net::HTTPRequest::HTTP_DELETE, TEST_ENDPOINT);
-
-        stopRequest.setContentType(CONTENT_TYPE);
-        clientSession.sendRequest(stopRequest);
-
-        HTTPResponse stopResponse;
-        clientSession.receiveResponse(stopResponse);
-
-        EXPECT_THAT(
-            stopResponse.getStatus(),
-            AnyOf(Poco::Net::HTTPResponse::HTTP_ACCEPTED, Poco::Net::HTTPResponse::HTTP_NO_CONTENT)
-        );
-    }
-
-}
-
 TEST_F(ConsumerDaemonResourceTest, OPTIONS_With_Success)
 {
 
@@ -142,6 +68,6 @@ TEST_F(ConsumerDaemonResourceTest, OPTIONS_With_Success)
 
     ASSERT_EQ(CONTENT_TYPE, response.getContentType());
     ASSERT_EQ(Poco::Net::HTTPResponse::HTTP_OK, response.getStatus());
-    ASSERT_EQ("POST, GET, DELETE, OPTIONS", response.get("Allow"));
+    ASSERT_EQ("GET, OPTIONS", response.get("Allow"));
 
 }

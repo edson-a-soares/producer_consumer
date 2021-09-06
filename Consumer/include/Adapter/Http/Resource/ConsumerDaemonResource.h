@@ -14,12 +14,7 @@ namespace Http {
 
     protected:
         void handle_get(    Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse &) override;
-        void handle_post(   Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse &) override;
-        void handle_delete( Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse &) override;
         void handle_options(Poco::Net::HTTPServerRequest &, Poco::Net::HTTPServerResponse &) override;
-
-    private:
-        static std::string daemonChannelParameter(const std::string & requestBody);
 
     };
 
