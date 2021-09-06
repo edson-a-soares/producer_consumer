@@ -15,7 +15,7 @@ namespace Http {
 	    if (factoryKey.empty()) {
             auto errorHandler = notFoundErrorHandler();
             if (errorHandler == nullptr)
-                errorHandler = new ::Http::DefaultNotFoundErrorHandler();
+                errorHandler = new DefaultNotFoundErrorHandler();
 
             return errorHandler;
         }

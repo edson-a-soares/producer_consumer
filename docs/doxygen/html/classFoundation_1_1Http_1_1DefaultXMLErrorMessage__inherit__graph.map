@@ -1,4 +1,4 @@
-<map id="Http::DefaultXMLErrorMessage" name="Http::DefaultXMLErrorMessage">
+<map id="Foundation::Http::DefaultXMLErrorMessage" name="Foundation::Http::DefaultXMLErrorMessage">
 <area shape="rect" id="node2" href="$classFoundation_1_1Message_1_1AbstractXmlMessage.html" title="Foundation::Message\l::AbstractXmlMessage" alt="" coords="474,5,629,47"/>
 <area shape="rect" id="node3" href="$classFoundation_1_1IO_1_1AbstractFileReader.html" title="Foundation::IO::Abstract\lFileReader" alt="" coords="232,5,397,47"/>
 <area shape="rect" id="node4" href="$classFoundation_1_1IO_1_1FileReaderInterface.html" title="Foundation::IO::FileReader\lInterface" alt="" coords="5,5,184,47"/>

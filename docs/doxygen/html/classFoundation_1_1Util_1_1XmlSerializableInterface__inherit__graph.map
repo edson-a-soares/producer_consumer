@@ -1,4 +1,4 @@
 <map id="Foundation::Util::XmlSerializableInterface" name="Foundation::Util::XmlSerializableInterface">
-<area shape="rect" id="node2" href="$classFoundation_1_1Message_1_1XMLMessage.html" title="Foundation::Message\l::XMLMessage" alt="" coords="5,95,152,136"/>
-<area shape="rect" id="node3" href="$classHttp_1_1DefaultXMLErrorMessage.html" title="Http::DefaultXMLErrorMessage" alt="" coords="176,102,381,129"/>
+<area shape="rect" id="node2" href="$classFoundation_1_1Http_1_1DefaultXMLErrorMessage.html" title="Foundation::Http::Default\lXMLErrorMessage" alt="" coords="5,95,175,136"/>
+<area shape="rect" id="node3" href="$classFoundation_1_1Message_1_1XMLMessage.html" title="Foundation::Message\l::XMLMessage" alt="" coords="199,95,346,136"/>
 </map>

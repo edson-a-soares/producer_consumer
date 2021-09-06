@@ -70,7 +70,7 @@ namespace Http {
     {
         auto messageParser = errorMessageParser();
         if (messageParser == nullptr)
-            messageParser = std::make_unique<::Http::DefaultErrorMessageParser>();
+            messageParser = std::make_unique<DefaultErrorMessageParser>();
 
         auto errorMessage = messageParser->toXml(
             response.getReason(),

@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" href="$classFoundation_1_1Http_1_1ErrorMessageParserInterface.html" title="Foundation::Http::ErrorMessage\lParserInterface" alt="" coords="5,5,213,47"/>
-<area shape="rect" id="node2" href="$classHttp_1_1DefaultErrorMessageParser.html" title="Http::DefaultErrorMessage\lParser" alt="" coords="261,5,440,47"/>
+<area shape="rect" id="node2" href="$classFoundation_1_1Http_1_1DefaultErrorMessageParser.html" title="Foundation::Http::Default\lErrorMessageParser" alt="" coords="261,5,431,47"/>
 </map>

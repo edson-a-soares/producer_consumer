@@ -1,5 +1,6 @@
 #include "Adapter/Http/DefaultXMLErrorMessage.h"
 
+namespace Foundation {
 namespace Http {
 
 
@@ -30,4 +31,4 @@ namespace Http {
     }
 
 
-}
+} }

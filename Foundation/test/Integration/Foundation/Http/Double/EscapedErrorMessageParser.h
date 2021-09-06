@@ -32,7 +32,7 @@ namespace Http {
         const std::string & status,
         const std::string & detail
     ) {
-        auto xmlMessageObject = ::Http::DefaultXMLErrorMessage(type, status, detail, "0");
+        auto xmlMessageObject = DefaultXMLErrorMessage(type, status, detail, "0");
         auto errorMessage = xmlMessageObject.toXml();
         std::replace(errorMessage.begin(), errorMessage.end(), ' ', '_');
         return errorMessage;

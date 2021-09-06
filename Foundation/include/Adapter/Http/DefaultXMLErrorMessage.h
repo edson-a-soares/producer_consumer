@@ -7,6 +7,7 @@
 #include "Foundation/Message/AbstractXmlMessage.h"
 #include "Foundation/Util/XmlSerializableInterface.h"
 
+namespace Foundation {
 namespace Http {
 
 
@@ -35,6 +36,6 @@ namespace Http {
     };
 
 
-}
+} }
 
 #endif

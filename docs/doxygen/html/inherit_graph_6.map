@@ -1,6 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$classFoundation_1_1Http_1_1AbstractResource.html" title="Foundation::Http::Abstract\lResource" alt="" coords="207,35,383,76"/>
-<area shape="rect" id="node5" href="$classHttp_1_1DefaultNotFoundErrorHandler.html" title="Http::DefaultNotFoundError\lHandler" alt="" coords="204,100,387,141"/>
-<area shape="rect" id="node3" href="$classConsumer_1_1Http_1_1ConsumerDaemonResource.html" title="Consumer::Http::Consumer\lDaemonResource" alt="" coords="455,5,638,47"/>
-<area shape="rect" id="node4" href="$classProducer_1_1Http_1_1MessageResource.html" title="Producer::Http::MessageResource" alt="" coords="435,71,659,98"/>
+<area shape="rect" id="node2" href="$classFoundation_1_1Http_1_1AbstractResource.html" title="Foundation::Http::Abstract\lResource" alt="" coords="204,35,380,76"/>
+<area shape="rect" id="node5" href="$classFoundation_1_1Http_1_1DefaultNotFoundErrorHandler.html" title="Foundation::Http::Default\lNotFoundErrorHandler" alt="" coords="207,100,377,141"/>
+<area shape="rect" id="node3" href="$classConsumer_1_1Http_1_1ConsumerDaemonResource.html" title="Consumer::Http::Consumer\lDaemonResource" alt="" coords="449,5,631,47"/>
+<area shape="rect" id="node4" href="$classProducer_1_1Http_1_1MessageResource.html" title="Producer::Http::MessageResource" alt="" coords="428,71,652,98"/>
 </map>

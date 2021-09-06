@@ -6,6 +6,7 @@
 #include "Poco/Net/HTTPRequestHandler.h"
 #include "Poco/Net/HTTPServerResponse.h"
 
+namespace Foundation {
 namespace Http {
 
 
@@ -17,6 +18,6 @@ namespace Http {
     };
 
 
-}
+} }
 
 #endif

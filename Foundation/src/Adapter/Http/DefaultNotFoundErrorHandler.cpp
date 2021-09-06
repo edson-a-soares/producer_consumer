@@ -1,6 +1,7 @@
 #include "Adapter/Http/DefaultErrorMessageParser.h"
 #include "Adapter/Http/DefaultNotFoundErrorHandler.h"
 
+namespace Foundation {
 namespace Http {
 
 
@@ -20,4 +21,4 @@ namespace Http {
 	}
 
 
-}
+} }

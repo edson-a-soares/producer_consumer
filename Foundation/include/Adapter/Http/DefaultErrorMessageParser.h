@@ -5,6 +5,7 @@
 #include "Foundation/Foundation.h"
 #include "Foundation/Http/ErrorMessageParserInterface.h"
 
+namespace Foundation {
 namespace Http {
 
 
@@ -20,6 +21,6 @@ namespace Http {
     };
 
 
-}
+} }
 
 #endif
