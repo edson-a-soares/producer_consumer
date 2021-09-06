@@ -1,5 +1,6 @@
 #include "Adapter/Validation/AcceptedHttpContentTypeHeaders.h"
 
+namespace Foundation {
 namespace Validation {
 
 
@@ -19,4 +20,4 @@ namespace Validation {
     }
 
 
-}
+} }

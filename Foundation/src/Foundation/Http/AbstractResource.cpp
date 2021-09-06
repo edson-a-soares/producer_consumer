@@ -54,14 +54,14 @@ namespace Http {
 
     void AbstractResource::validateHttpMethod(Poco::Net::HTTPServerRequest & request)
     {
-        auto httpMethodValidation = ::Validation::AllowedHttpMethods(request);
+        auto httpMethodValidation = Foundation::Validation::AllowedHttpMethods(request);
         if (!httpMethodValidation.isValid())
             throw Poco::Exception("Method Not Allowed", httpMethodValidation.errorMessage(), 405);
     }
 
     void AbstractResource::validateMediaType(Poco::Net::HTTPServerRequest & request)
     {
-        auto mediaTypeValidation = ::Validation::AcceptedHttpContentTypeHeaders(request);
+        auto mediaTypeValidation = Foundation::Validation::AcceptedHttpContentTypeHeaders(request);
         if (!mediaTypeValidation.isValid())
             throw Poco::Exception("Unsupported Media Type", mediaTypeValidation.errorMessage(), 415);
     }

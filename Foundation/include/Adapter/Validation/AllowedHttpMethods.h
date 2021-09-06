@@ -5,6 +5,7 @@
 #include "Foundation/Foundation.h"
 #include "Foundation/Util/ValidationInterface.h"
 
+namespace Foundation {
 namespace Validation {
 
 
@@ -21,6 +22,6 @@ namespace Validation {
     };
 
 
-}
+} }
 
 #endif

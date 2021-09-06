@@ -1,4 +1,4 @@
 <map id="Foundation::Util::ValidationInterface" name="Foundation::Util::ValidationInterface">
-<area shape="rect" id="node2" href="$classValidation_1_1AcceptedHttpContentTypeHeaders.html" title="Validation::AcceptedHttp\lContentTypeHeaders" alt="" coords="5,95,172,136"/>
-<area shape="rect" id="node3" href="$classValidation_1_1AllowedHttpMethods.html" title="Validation::AllowedHttpMethods" alt="" coords="197,102,405,129"/>
+<area shape="rect" id="node2" href="$classFoundation_1_1Validation_1_1AcceptedHttpContentTypeHeaders.html" title="Foundation::Validation\l::AcceptedHttpContentTypeHeaders" alt="" coords="232,5,467,47"/>
+<area shape="rect" id="node3" href="$classFoundation_1_1Validation_1_1AllowedHttpMethods.html" title="Foundation::Validation\l::AllowedHttpMethods" alt="" coords="274,71,425,112"/>
 </map>

@@ -1,6 +1,7 @@
 #include "Adapter/Validation/AllowedHttpMethods.h"
 
 
+namespace Foundation {
 namespace Validation {
 
 
@@ -24,4 +25,4 @@ namespace Validation {
     }
 
 
-}
+} }
