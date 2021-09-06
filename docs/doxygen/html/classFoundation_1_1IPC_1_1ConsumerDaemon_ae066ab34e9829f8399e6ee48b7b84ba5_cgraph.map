@@ -1,0 +1,4 @@
+<map id="Foundation::IPC::ConsumerDaemon::stopListening" name="Foundation::IPC::ConsumerDaemon::stopListening">
+<area shape="rect" id="node2" href="$classFoundation_1_1IPC_1_1DaemonLoop.html#a155403b863f61f68fe0704c8ebf08c63" title="Foundation::IPC::DaemonLoop\l::instance" alt="" coords="239,5,441,47"/>
+<area shape="rect" id="node3" href="$classFoundation_1_1IPC_1_1DaemonLoop.html#a81e2759b33eaf36db011e4a16fe1202f" title="Foundation::IPC::DaemonLoop\l::turnOff" alt="" coords="239,71,441,112"/>
+</map>

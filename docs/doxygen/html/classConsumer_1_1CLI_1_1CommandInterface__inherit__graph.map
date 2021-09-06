@@ -1,6 +1,6 @@
 <map id="Consumer::CLI::CommandInterface" name="Consumer::CLI::CommandInterface">
-<area shape="rect" id="node2" href="$classConsumer_1_1CLI_1_1DaemonLoopRun.html" title="Consumer::CLI::DaemonLoopRun" alt="" coords="285,5,505,32"/>
-<area shape="rect" id="node3" href="$classConsumer_1_1CLI_1_1DaemonLoopStop.html" title="Consumer::CLI::DaemonLoopStop" alt="" coords="284,56,507,83"/>
-<area shape="rect" id="node4" href="$classConsumer_1_1CLI_1_1ShowHelp.html" title="Consumer::CLI::ShowHelp" alt="" coords="306,107,485,133"/>
-<area shape="rect" id="node5" href="$classConsumer_1_1CLI_1_1StandaloneMessageBus.html" title="Consumer::CLI::Standalone\lMessageBus" alt="" coords="303,158,487,199"/>
+<area shape="rect" id="node2" href="$classConsumer_1_1CLI_1_1ConsumerDaemonStart.html" title="Consumer::CLI::ConsumerDaemon\lStart" alt="" coords="297,5,525,47"/>
+<area shape="rect" id="node3" href="$classConsumer_1_1CLI_1_1ConsumerDaemonStatus.html" title="Consumer::CLI::ConsumerDaemon\lStatus" alt="" coords="297,71,525,112"/>
+<area shape="rect" id="node4" href="$classConsumer_1_1CLI_1_1ConsumerDaemonStop.html" title="Consumer::CLI::ConsumerDaemonStop" alt="" coords="284,137,539,163"/>
+<area shape="rect" id="node5" href="$classConsumer_1_1CLI_1_1ShowHelp.html" title="Consumer::CLI::ShowHelp" alt="" coords="322,187,501,214"/>
 </map>

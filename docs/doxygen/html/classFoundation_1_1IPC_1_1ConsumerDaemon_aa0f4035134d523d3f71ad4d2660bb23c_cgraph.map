@@ -1,0 +1,5 @@
+<map id="Foundation::IPC::ConsumerDaemon::startListening" name="Foundation::IPC::ConsumerDaemon::startListening">
+<area shape="rect" id="node2" href="$classFoundation_1_1IPC_1_1MessageBus_1_1Factory.html#afa15336120da746c3f4e274e92e737c7" title="Foundation::IPC::Message\lBus::Factory::create" alt="" coords="251,5,429,47"/>
+<area shape="rect" id="node3" href="$classFoundation_1_1IPC_1_1DaemonLoop.html#a155403b863f61f68fe0704c8ebf08c63" title="Foundation::IPC::DaemonLoop\l::instance" alt="" coords="239,71,441,112"/>
+<area shape="rect" id="node4" href="$classFoundation_1_1IPC_1_1DaemonLoop.html#abbf16f005f28517198e643545489541b" title="Foundation::IPC::DaemonLoop\l::runWith" alt="" coords="239,136,441,177"/>
+</map>

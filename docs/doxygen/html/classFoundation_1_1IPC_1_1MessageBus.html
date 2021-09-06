@@ -64,6 +64,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classFoundation_1_1IPC_1_1MessageBus-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -73,6 +74,11 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="MessageBus_8h_source.html">MessageBus.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFoundation_1_1IPC_1_1MessageBus_1_1Factory.html">Factory</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9aeff63f1dc02e80d7e794166e53121a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFoundation_1_1IPC_1_1MessageBus.html#a9aeff63f1dc02e80d7e794166e53121a">MessageBus</a> ()=delete</td></tr>
@@ -85,8 +91,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a613c182361b86057eed64337eccf10e7"><td class="memItemLeft" align="right" valign="top"><a id="a613c182361b86057eed64337eccf10e7"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>MessageBus</b> (<a class="el" href="classFoundation_1_1IPC_1_1MessageBus.html">MessageBus</a> &amp;&amp;) noexcept=default</td></tr>
 <tr class="separator:a613c182361b86057eed64337eccf10e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e9af8cbeffd63d379a97730f7dcd634"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFoundation_1_1IPC_1_1MessageBus.html#a0e9af8cbeffd63d379a97730f7dcd634">MessageBus</a> (std::unique_ptr&lt; <a class="el" href="classFoundation_1_1IPC_1_1BoundedBuffer.html">BoundedBuffer</a> &gt; inputChannel, std::unique_ptr&lt; <a class="el" href="classFoundation_1_1IPC_1_1BoundedBuffer.html">BoundedBuffer</a> &gt; outputChannel)</td></tr>
-<tr class="separator:a0e9af8cbeffd63d379a97730f7dcd634"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bb01c943bd5e03f4840f3c84e5ff9cf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFoundation_1_1IPC_1_1MessageBus.html#a8bb01c943bd5e03f4840f3c84e5ff9cf">readResponse</a> ()</td></tr>
 <tr class="separator:a8bb01c943bd5e03f4840f3c84e5ff9cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7df1600c6f933021af0af28df0d10c88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFoundation_1_1IPC_1_1MessageBus.html#a7df1600c6f933021af0af28df0d10c88">sendMessage</a> (const std::string &amp;content)</td></tr>
@@ -95,15 +99,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3af84a201e29fb3414e851dd41acfaea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa589c568dea9043e19e6d00747c3394b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFoundation_1_1IPC_1_1MessageBus.html#aa589c568dea9043e19e6d00747c3394b">sendMessage</a> (const std::string &amp;message, const std::function&lt; void(const std::string &amp;response)&gt; &amp;responseHandler)</td></tr>
 <tr class="separator:aa589c568dea9043e19e6d00747c3394b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a8b19d17069c7a8ebf6e4d949a78daf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFoundation_1_1IPC_1_1MessageBus.html#a8a8b19d17069c7a8ebf6e4d949a78daf">destroyChannels</a> ()</td></tr>
+<tr class="separator:a8a8b19d17069c7a8ebf6e4d949a78daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A Message Bus is a combination of a common data model, a common command set, and a messaging infrastructure to allow different systems to communicate through a shared set of interfaces.</p>
 <p>This class is a mechanism for managing the exchange of messages from sending and receiving (i.e., producers|consumers, senders|listeners) in different processes. </p>
 
-<p class="definition">Definition at line <a class="el" href="MessageBus_8h_source.html#l00021">21</a> of file <a class="el" href="MessageBus_8h_source.html">MessageBus.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MessageBus_8h_source.html#l00022">22</a> of file <a class="el" href="MessageBus_8h_source.html">MessageBus.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9aeff63f1dc02e80d7e794166e53121a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9aeff63f1dc02e80d7e794166e53121a">&#9670;&nbsp;</a></span>MessageBus() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9aeff63f1dc02e80d7e794166e53121a">&#9670;&nbsp;</a></span>MessageBus()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -144,49 +150,31 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>A destructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="MessageBus_8cpp_source.html#l00014">14</a> of file <a class="el" href="MessageBus_8cpp_source.html">MessageBus.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MessageBus_8cpp_source.html#l00015">15</a> of file <a class="el" href="MessageBus_8cpp_source.html">MessageBus.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a0e9af8cbeffd63d379a97730f7dcd634"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e9af8cbeffd63d379a97730f7dcd634">&#9670;&nbsp;</a></span>MessageBus() <span class="overload">[2/2]</span></h2>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8a8b19d17069c7a8ebf6e4d949a78daf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a8b19d17069c7a8ebf6e4d949a78daf">&#9670;&nbsp;</a></span>destroyChannels()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Foundation::IPC::MessageBus::MessageBus </td>
+          <td class="memname">void Foundation::IPC::MessageBus::destroyChannels </td>
           <td>(</td>
-          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classFoundation_1_1IPC_1_1BoundedBuffer.html">BoundedBuffer</a> &gt;&#160;</td>
-          <td class="paramname"><em>inputChannel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classFoundation_1_1IPC_1_1BoundedBuffer.html">BoundedBuffer</a> &gt;&#160;</td>
-          <td class="paramname"><em>outputChannel</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>A constructor.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">inputChannel</td><td></td></tr>
-    <tr><td class="paramname">outputChannel</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
+<p>It destroys the bus channels immediately. </p>
 
-<p class="definition">Definition at line <a class="el" href="MessageBus_8cpp_source.html#l00009">9</a> of file <a class="el" href="MessageBus_8cpp_source.html">MessageBus.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MessageBus_8cpp_source.html#l00045">45</a> of file <a class="el" href="MessageBus_8cpp_source.html">MessageBus.cpp</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3af84a201e29fb3414e851dd41acfaea"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3af84a201e29fb3414e851dd41acfaea">&#9670;&nbsp;</a></span>readMessage()</h2>
 
@@ -202,15 +190,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>It reads a message with a specific handler function.</p>
+<p>It reads a errorMessage with a specific handler function.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">messageHandler</td><td>The handler function for processing the response message. </td></tr>
+    <tr><td class="paramname">messageHandler</td><td>The handler function for processing the response errorMessage. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="MessageBus_8cpp_source.html#l00028">28</a> of file <a class="el" href="MessageBus_8cpp_source.html">MessageBus.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MessageBus_8cpp_source.html#l00031">31</a> of file <a class="el" href="MessageBus_8cpp_source.html">MessageBus.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -236,10 +224,10 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>It just gets the response message.</p>
-<dl class="section return"><dt>Returns</dt><dd>The response message. </dd></dl>
+<p>It just gets the response errorMessage.</p>
+<dl class="section return"><dt>Returns</dt><dd>The response errorMessage. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="MessageBus_8cpp_source.html#l00018">18</a> of file <a class="el" href="MessageBus_8cpp_source.html">MessageBus.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MessageBus_8cpp_source.html#l00021">21</a> of file <a class="el" href="MessageBus_8cpp_source.html">MessageBus.cpp</a>.</p>
 
 </div>
 </div>
@@ -258,15 +246,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>It just sends a message.</p>
+<p>It just sends a errorMessage.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">content</td><td>The message content to be sent. </td></tr>
+    <tr><td class="paramname">content</td><td>The errorMessage content to be sent. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="MessageBus_8cpp_source.html#l00023">23</a> of file <a class="el" href="MessageBus_8cpp_source.html">MessageBus.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MessageBus_8cpp_source.html#l00026">26</a> of file <a class="el" href="MessageBus_8cpp_source.html">MessageBus.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -303,11 +291,11 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>It sends a message and defines a response handler function to process it.</p>
+<p>It sends a errorMessage and defines a response handler function to process it.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>The message to send. </td></tr>
-    <tr><td class="paramname">responseHandler</td><td>The handler function for processing the response message. </td></tr>
+    <tr><td class="paramname">message</td><td>The errorMessage to send. </td></tr>
+    <tr><td class="paramname">responseHandler</td><td>The handler function for processing the response errorMessage. </td></tr>
   </table>
   </dd>
 </dl>

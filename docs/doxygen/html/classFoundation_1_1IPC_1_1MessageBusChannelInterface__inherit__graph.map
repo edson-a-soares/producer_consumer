@@ -1,0 +1,4 @@
+<map id="Foundation::IPC::MessageBusChannelInterface" name="Foundation::IPC::MessageBusChannelInterface">
+<area shape="rect" id="node2" href="$classFoundation_1_1IPC_1_1DefaultMessageBusChannel.html" title="Foundation::IPC::Default\lMessageBusChannel" alt="" coords="5,95,172,136"/>
+<area shape="rect" id="node3" href="$classFoundation_1_1IPC_1_1MainMessageBusChannel.html" title="Foundation::IPC::MainMessage\lBusChannel" alt="" coords="196,95,403,136"/>
+</map>

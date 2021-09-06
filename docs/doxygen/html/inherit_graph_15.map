@@ -1,4 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classFoundation_1_1Util_1_1XmlDeserializableInterface.html" title="Foundation::Util::XmlDeserializable\lInterface\&lt; XMLMessage \&gt;" alt="" coords="5,5,232,47"/>
-<area shape="rect" id="node2" href="$classFoundation_1_1Message_1_1XMLMessageParser.html" title="Foundation::Message\l::XMLMessageParser" alt="" coords="280,5,428,47"/>
+<area shape="rect" id="node1" href="$classFoundation_1_1IPC_1_1MessageBusChannelInterface.html" title="Foundation::IPC::Message\lBusChannelInterface" alt="" coords="5,39,184,80"/>
+<area shape="rect" id="node2" href="$classFoundation_1_1IPC_1_1DefaultMessageBusChannel.html" title="Foundation::IPC::Default\lMessageBusChannel" alt="" coords="252,5,419,47"/>
+<area shape="rect" id="node3" href="$classFoundation_1_1IPC_1_1MainMessageBusChannel.html" title="Foundation::IPC::MainMessage\lBusChannel" alt="" coords="232,71,439,112"/>
 </map>

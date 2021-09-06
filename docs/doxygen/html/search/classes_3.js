@@ -1,6 +1,8 @@
 var searchData=
 [
   ['daemonloop',['DaemonLoop',['../classFoundation_1_1IPC_1_1DaemonLoop.html',1,'Foundation::IPC']]],
-  ['daemonlooprun',['DaemonLoopRun',['../classConsumer_1_1CLI_1_1DaemonLoopRun.html',1,'Consumer::CLI']]],
-  ['daemonloopstop',['DaemonLoopStop',['../classConsumer_1_1CLI_1_1DaemonLoopStop.html',1,'Consumer::CLI']]]
+  ['defaulterrormessageparser',['DefaultErrorMessageParser',['../classHttp_1_1DefaultErrorMessageParser.html',1,'Http']]],
+  ['defaultmessagebuschannel',['DefaultMessageBusChannel',['../classFoundation_1_1IPC_1_1DefaultMessageBusChannel.html',1,'Foundation::IPC']]],
+  ['defaultnotfounderrorhandler',['DefaultNotFoundErrorHandler',['../classHttp_1_1DefaultNotFoundErrorHandler.html',1,'Http']]],
+  ['defaultxmlerrormessage',['DefaultXMLErrorMessage',['../classHttp_1_1DefaultXMLErrorMessage.html',1,'Http']]]
 ];

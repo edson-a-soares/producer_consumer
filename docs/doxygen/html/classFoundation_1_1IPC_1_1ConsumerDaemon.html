@@ -70,23 +70,156 @@ $(function() {
 <div class="title">Foundation::IPC::ConsumerDaemon Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="ConsumerDaemon_8h_source.html">ConsumerDaemon.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:afd55dbad8c26002c2e7c11cdbb6d58f3"><td class="memItemLeft" align="right" valign="top"><a id="afd55dbad8c26002c2e7c11cdbb6d58f3"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>isMonitoring</b> ()</td></tr>
-<tr class="separator:afd55dbad8c26002c2e7c11cdbb6d58f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab8d8d7fb4cee1779364129f0390e173"><td class="memItemLeft" align="right" valign="top"><a id="aab8d8d7fb4cee1779364129f0390e173"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>stopMonitoring</b> ()</td></tr>
-<tr class="separator:aab8d8d7fb4cee1779364129f0390e173"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cc2411e3a299af8b77a4befa79489cd"><td class="memItemLeft" align="right" valign="top"><a id="a8cc2411e3a299af8b77a4befa79489cd"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>startMonitoring</b> (const std::function&lt; std::string(const std::string &amp;message)&gt; &amp;callback)</td></tr>
-<tr class="separator:a8cc2411e3a299af8b77a4befa79489cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a145516f7d132c9c6b740f70854d0fd5c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFoundation_1_1IPC_1_1ConsumerDaemon.html#a145516f7d132c9c6b740f70854d0fd5c">isListening</a> ()</td></tr>
+<tr class="separator:a145516f7d132c9c6b740f70854d0fd5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae066ab34e9829f8399e6ee48b7b84ba5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFoundation_1_1IPC_1_1ConsumerDaemon.html#ae066ab34e9829f8399e6ee48b7b84ba5">stopListening</a> ()</td></tr>
+<tr class="separator:ae066ab34e9829f8399e6ee48b7b84ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0f4035134d523d3f71ad4d2660bb23c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFoundation_1_1IPC_1_1ConsumerDaemon.html#aa0f4035134d523d3f71ad4d2660bb23c">startListening</a> (std::unique_ptr&lt; <a class="el" href="classFoundation_1_1IPC_1_1MessageBusChannelInterface.html">MessageBusChannelInterface</a> &gt; messageBusInformation, const std::function&lt; std::string(const std::string &amp;message)&gt; &amp;callback)</td></tr>
+<tr class="separator:aa0f4035134d523d3f71ad4d2660bb23c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ConsumerDaemon_8h_source.html#l00015">15</a> of file <a class="el" href="ConsumerDaemon_8h_source.html">ConsumerDaemon.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>A daemon (or service) is a background process that is designed to runOn autonomously, with little or no user intervention. This class executes a handler function that keeps listening to the specified errorMessage bus.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classFoundation_1_1IPC_1_1DaemonLoop.html">DaemonLoop</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ConsumerDaemon_8h_source.html#l00019">19</a> of file <a class="el" href="ConsumerDaemon_8h_source.html">ConsumerDaemon.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a145516f7d132c9c6b740f70854d0fd5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a145516f7d132c9c6b740f70854d0fd5c">&#9670;&nbsp;</a></span>isListening()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Foundation::IPC::ConsumerDaemon::isListening </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>It checks if the daemon is listening.</p>
+<dl class="section return"><dt>Returns</dt><dd>The status (true or false) value. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ConsumerDaemon_8cpp_source.html#l00020">20</a> of file <a class="el" href="ConsumerDaemon_8cpp_source.html">ConsumerDaemon.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classFoundation_1_1IPC_1_1ConsumerDaemon_a145516f7d132c9c6b740f70854d0fd5c_cgraph.png" border="0" usemap="#classFoundation_1_1IPC_1_1ConsumerDaemon_a145516f7d132c9c6b740f70854d0fd5c_cgraph" alt=""/></div>
+<map name="classFoundation_1_1IPC_1_1ConsumerDaemon_a145516f7d132c9c6b740f70854d0fd5c_cgraph" id="classFoundation_1_1IPC_1_1ConsumerDaemon_a145516f7d132c9c6b740f70854d0fd5c_cgraph">
+<area shape="rect" id="node2" href="classFoundation_1_1IPC_1_1DaemonLoop.html#a155403b863f61f68fe0704c8ebf08c63" title="Foundation::IPC::DaemonLoop\l::instance" alt="" coords="239,5,441,47"/>
+<area shape="rect" id="node3" href="classFoundation_1_1IPC_1_1DaemonLoop.html#a7b3e4fea98de832c121bdcbf2e74800f" title="Foundation::IPC::DaemonLoop\l::isRunning" alt="" coords="239,71,441,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa0f4035134d523d3f71ad4d2660bb23c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0f4035134d523d3f71ad4d2660bb23c">&#9670;&nbsp;</a></span>startListening()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Foundation::IPC::ConsumerDaemon::startListening </td>
+          <td>(</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classFoundation_1_1IPC_1_1MessageBusChannelInterface.html">MessageBusChannelInterface</a> &gt;&#160;</td>
+          <td class="paramname"><em>messageBusInformation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; std::string(const std::string &amp;message)&gt; &amp;&#160;</td>
+          <td class="paramname"><em>callback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>It starts the listening.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">messageBusInformation</td><td>The information of the errorMessage bus the daemon should be listening to. </td></tr>
+    <tr><td class="paramname">callback</td><td>The listening function designated to handle the response messages. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="ConsumerDaemon_8cpp_source.html#l00010">10</a> of file <a class="el" href="ConsumerDaemon_8cpp_source.html">ConsumerDaemon.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classFoundation_1_1IPC_1_1ConsumerDaemon_aa0f4035134d523d3f71ad4d2660bb23c_cgraph.png" border="0" usemap="#classFoundation_1_1IPC_1_1ConsumerDaemon_aa0f4035134d523d3f71ad4d2660bb23c_cgraph" alt=""/></div>
+<map name="classFoundation_1_1IPC_1_1ConsumerDaemon_aa0f4035134d523d3f71ad4d2660bb23c_cgraph" id="classFoundation_1_1IPC_1_1ConsumerDaemon_aa0f4035134d523d3f71ad4d2660bb23c_cgraph">
+<area shape="rect" id="node2" href="classFoundation_1_1IPC_1_1MessageBus_1_1Factory.html#afa15336120da746c3f4e274e92e737c7" title="Foundation::IPC::Message\lBus::Factory::create" alt="" coords="251,5,429,47"/>
+<area shape="rect" id="node3" href="classFoundation_1_1IPC_1_1DaemonLoop.html#a155403b863f61f68fe0704c8ebf08c63" title="Foundation::IPC::DaemonLoop\l::instance" alt="" coords="239,71,441,112"/>
+<area shape="rect" id="node4" href="classFoundation_1_1IPC_1_1DaemonLoop.html#abbf16f005f28517198e643545489541b" title="Foundation::IPC::DaemonLoop\l::runWith" alt="" coords="239,136,441,177"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae066ab34e9829f8399e6ee48b7b84ba5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae066ab34e9829f8399e6ee48b7b84ba5">&#9670;&nbsp;</a></span>stopListening()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Foundation::IPC::ConsumerDaemon::stopListening </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>It stops the listening. </p>
+
+<p class="definition">Definition at line <a class="el" href="ConsumerDaemon_8cpp_source.html#l00025">25</a> of file <a class="el" href="ConsumerDaemon_8cpp_source.html">ConsumerDaemon.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classFoundation_1_1IPC_1_1ConsumerDaemon_ae066ab34e9829f8399e6ee48b7b84ba5_cgraph.png" border="0" usemap="#classFoundation_1_1IPC_1_1ConsumerDaemon_ae066ab34e9829f8399e6ee48b7b84ba5_cgraph" alt=""/></div>
+<map name="classFoundation_1_1IPC_1_1ConsumerDaemon_ae066ab34e9829f8399e6ee48b7b84ba5_cgraph" id="classFoundation_1_1IPC_1_1ConsumerDaemon_ae066ab34e9829f8399e6ee48b7b84ba5_cgraph">
+<area shape="rect" id="node2" href="classFoundation_1_1IPC_1_1DaemonLoop.html#a155403b863f61f68fe0704c8ebf08c63" title="Foundation::IPC::DaemonLoop\l::instance" alt="" coords="239,5,441,47"/>
+<area shape="rect" id="node3" href="classFoundation_1_1IPC_1_1DaemonLoop.html#a81e2759b33eaf36db011e4a16fe1202f" title="Foundation::IPC::DaemonLoop\l::turnOff" alt="" coords="239,71,441,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>Foundation/include/Foundation/IPC/<a class="el" href="ConsumerDaemon_8h_source.html">ConsumerDaemon.h</a></li>
 <li>Foundation/src/Foundation/IPC/<a class="el" href="ConsumerDaemon_8cpp_source.html">ConsumerDaemon.cpp</a></li>
 </ul>
