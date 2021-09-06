@@ -27,6 +27,11 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -w -Wl,--discard-all
 #-----------------------------------------------------------------------------
 set (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
+#-----------------------------------------------------------------------------
+# It includes CMake application config supporting script.
+#-----------------------------------------------------------------------------
+include(ApplicationConfigFile)
+
 # It removes the prefix "lib" from the .so and .a files
 set(CMAKE_SHARED_LIBRARY_PREFIX "")
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
@@ -53,15 +58,19 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_HOME_DIRECTORY}/bin)
 #
 #-----------------------------------------------------------------------------
 
-# It defines the application's installation root directory name from the configuration file
-string(TOLOWER ${CMAKE_PROJECT_NAME} APPLICATION_INSTALLATION_DIRECTORY_NAME)
+#-----------------------------------------------------------------------------
+# It defines the application's root directory name from the configuration file.
+#
+# See.: data/settings/application.txt
+#-----------------------------------------------------------------------------
+string(TOLOWER ${installation_directory_name} APPLICATION_INSTALLATION_DIRECTORY_NAME)
 
 set(APPLICATION_BINARY_DIRECTORY  ${CMAKE_INSTALL_PREFIX}/bin)
 set(APPLICATION_CONFIG_DIRECTORY  ${CMAKE_INSTALL_PREFIX}/etc/${APPLICATION_INSTALLATION_DIRECTORY_NAME})
 set(APPLICATION_LIBRARY_DIRECTORY ${CMAKE_INSTALL_PREFIX}/lib/${APPLICATION_INSTALLATION_DIRECTORY_NAME})
 set(APPLICATION_SHARE_DIRECTORY   ${CMAKE_INSTALL_PREFIX}/share/${APPLICATION_INSTALLATION_DIRECTORY_NAME})
 
-# Tell CMake to add the application library directory to LD_LIBRARY_PATH
+# Add the application library directory to PATH
 set(CMAKE_INSTALL_RPATH ${APPLICATION_LIBRARY_DIRECTORY})
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
