@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classFoundation_1_1IO_1_1FileReaderInterface.html" title="Foundation::IO::FileReader\lInterface" alt="" coords="5,136,184,177"/>
+<area shape="rect" id="node2" href="$classFoundation_1_1IO_1_1AbstractFileReader.html" title="Foundation::IO::Abstract\lFileReader" alt="" coords="232,136,397,177"/>
+<area shape="rect" id="node3" href="$classFoundation_1_1Message_1_1AbstractXmlMessage.html" title="Foundation::Message\l::AbstractXmlMessage" alt="" coords="474,136,629,177"/>
+<area shape="rect" id="node4" href="$classFoundation_1_1Message_1_1XMLMessage.html" title="Foundation::Message\l::XMLMessage" alt="" coords="735,71,881,112"/>
+<area shape="rect" id="node5" href="$classHttp_1_1DefaultXMLErrorMessage.html" title="Http::DefaultXMLErrorMessage" alt="" coords="705,141,911,167"/>
+<area shape="rect" id="node6" href="$classFoundation_1_1Message_1_1MessageInterface.html" title="Foundation::Message\l::MessageInterface" alt="" coords="478,5,625,47"/>
+<area shape="rect" id="node7" href="$classFoundation_1_1Util_1_1XmlSerializableInterface.html" title="Foundation::Util::XmlSerializable\lInterface" alt="" coords="445,71,657,112"/>
+</map>
