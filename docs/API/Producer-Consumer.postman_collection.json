@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "e4ee28be-0c52-41b8-a9ce-7fa92633584a",
+		"name": "Producer/Consumer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/consumer/daemon_loop",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/consumer/daemon_loop",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consumer",
+						"daemon_loop"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/producer/message",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<message>\n    <id>93120f46-a11d-11ea-960a-d46a6af0899d</id>\n    <attributes>\n        <to>Dean Macfarlane</to>\n        <from>Suleman Wynn</from>\n        <subject>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</subject>\n    </attributes>\n    <character number=\"92\"/>\n    <body>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</body>\n</message>"
+				},
+				"url": {
+					"raw": "http://localhost:8080/producer/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"producer",
+						"message"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
