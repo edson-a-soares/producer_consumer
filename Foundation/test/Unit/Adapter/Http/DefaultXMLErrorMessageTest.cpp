@@ -6,7 +6,7 @@
 
 TEST(XMLErrorMessageTest, toXml)
 {
-    auto errorMessage = std::make_unique<::Http::DefaultXMLErrorMessage>(
+    auto errorMessage = std::make_unique<Foundation::Http::DefaultXMLErrorMessage>(
         "Bad Request",
         "400",
         "Client sent an invalid request, such as lacking required request body or parameter",

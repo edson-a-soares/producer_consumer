@@ -6,7 +6,7 @@ namespace Validation {
 
     AcceptedHttpContentTypeHeaders::AcceptedHttpContentTypeHeaders(Poco::Net::HTTPRequest & request)
         : _request(request),
-          contentTypes { "application/xml", "text/html" }
+          contentTypes { "application/xml" }
     {}
 
     bool AcceptedHttpContentTypeHeaders::isValid()
