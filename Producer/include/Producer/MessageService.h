@@ -12,13 +12,12 @@ namespace Producer {
 
     class API MessageService
     {
-        using Message = Foundation::Message::XMLMessage;
-
     public:
-        MessageService() = delete;
+        MessageService() = default;
         ~MessageService() = default;
-        explicit MessageService(Foundation::IPC::MessageBus *);
-        std::unique_ptr<Message> exchange(
+        explicit MessageService(std::shared_ptr<Foundation::IPC::MessageBus>);
+        std::unique_ptr<Foundation::Message::XMLMessage> exchange(const std::string & payload);
+        std::unique_ptr<Foundation::Message::XMLMessage> exchange(
             const std::string & to,
             const std::string & from,
             const std::string & subject,
@@ -26,7 +25,7 @@ namespace Producer {
         );
 
     private:
-        Foundation::IPC::MessageBus * messageBus;
+        std::shared_ptr<Foundation::IPC::MessageBus> messageBus;
 
     };
 

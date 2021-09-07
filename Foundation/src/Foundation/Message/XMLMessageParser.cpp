@@ -1,3 +1,4 @@
+#include <regex>
 #include <memory>
 #include "Poco/DOM/Document.h"
 #include "Poco/DOM/NodeList.h"
@@ -13,7 +14,11 @@ namespace Message {
         poco_assert_msg(!xml.empty(), "XML document must exit and be valid.");
 
         Poco::XML::DOMParser parser;
-        auto document = parser.parseString(xml);
+
+        std::regex expression(">[\\s\r\n]*<");
+        auto content = std::regex_replace(xml, expression, "><");
+
+        auto document = parser.parseString(content);
 
         auto idElement = document->getElementsByTagName("id");
         if ( idElement == nullptr || idElement->length() == 0 )

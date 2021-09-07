@@ -21,7 +21,7 @@ protected:
 };
 
 
-TEST_F(MessageResourceTest, POST)
+TEST_F(MessageResourceTest, POST_with_Bad_Request_For_EmptyRequestBody)
 {
     using namespace Poco::Net;
 
@@ -42,8 +42,8 @@ TEST_F(MessageResourceTest, POST)
     clientSession.receiveResponse(response);
 
     ASSERT_EQ(CONTENT_TYPE, response.getContentType());
-    ASSERT_EQ(Poco::Net::HTTPResponse::HTTP_OK, response.getStatus());
-    ASSERT_EQ(Poco::Net::HTTPMessage::UNKNOWN_CONTENT_LENGTH, response.getContentLength());
+    ASSERT_EQ(Poco::Net::HTTPResponse::HTTP_BAD_REQUEST, response.getStatus());
+    ASSERT_FALSE(response.getContentLength() == 0);
 
 }
 

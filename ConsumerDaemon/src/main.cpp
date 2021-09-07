@@ -1,4 +1,3 @@
-#include <iostream>
 #include "ConsumerDaemon/Application.h"
 
 int main (int, char * argv[])
