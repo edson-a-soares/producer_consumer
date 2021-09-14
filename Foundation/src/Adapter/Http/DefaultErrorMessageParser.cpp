@@ -8,8 +8,7 @@ namespace Http {
 
     std::string DefaultErrorMessageParser::toXml(const std::string & type, const std::string & status, const std::string & detail)
     {
-        auto errorMessage = DefaultXMLErrorMessage(type, status, detail);
-        return errorMessage.toXml();
+        return DefaultXMLErrorMessage(type, status, detail).toXml();
     }
 
 

@@ -175,7 +175,7 @@ namespace IPC {
             // boost::interprocess_exception::library_error (a weird error about memory size)
             poco_assert_msg_dbg(exception.get_error_code() != 18, "You need a bigger memory size.");
             if (exception.get_error_code() != 18)
-                throw Poco::AssertionViolationException();
+                throw Poco::AssertionViolationException("You need a bigger memory size.");
 
         }
 

@@ -1,7 +1,7 @@
 #include "Poco/URI.h"
 #include "Foundation/Http/Router.h"
 #include "Poco/Net/HTTPServerRequest.h"
-#include "Adapter/Http/DefaultNotFoundErrorHandler.h"
+#include "Adapter/Http/DefaultErrorHandler.h"
 
 namespace Foundation {
 namespace Http {
@@ -9,24 +9,34 @@ namespace Http {
 
     Poco::Net::HTTPRequestHandler * Router::createRequestHandler(const Poco::Net::HTTPServerRequest & request)
     {
+        using namespace Poco::Net;
+
 	    loadEndpoints();
 	    auto factoryKey = endpointFactoryKey(request.getURI());
 
-	    if (factoryKey.empty()) {
-            auto errorHandler = notFoundErrorHandler();
-            if (errorHandler == nullptr)
-                errorHandler = new DefaultNotFoundErrorHandler();
+        try {
+            if (factoryKey.empty())
+                return errorHandler()
+                    ->status(HTTPResponse::HTTP_NOT_FOUND)
+                    .detail("This endpoint does not exist.")
+                    .type(HTTPResponse::HTTP_REASON_NOT_FOUND)
+                    .build();
 
-            return errorHandler;
+            auto resourceFactory = getResourceFactoryRoutingTable()->createResourceFactory(factoryKey);
+            return resourceFactory->createResource();
+
+        } catch (Poco::Exception & exception) {
+            return errorHandler()
+                ->detail(exception.displayText())
+                .status(HTTPResponse::HTTP_INTERNAL_SERVER_ERROR)
+                .type(HTTPResponse::HTTP_REASON_INTERNAL_SERVER_ERROR)
+                .build();
         }
-
-	    auto factory = getResourceFactoryRoutingTable()->createResourceFactory(factoryKey);
-	    return factory->createResource();
     }
 
-    Poco::Net::HTTPRequestHandler * Router::notFoundErrorHandler()
+    std::unique_ptr<ErrorHandlerBuilderInterface> Router::errorHandler()
     {
-        return nullptr;
+        return std::make_unique<DefaultErrorHandler::Builder>();
     }
 
     std::string Router::endpointFactoryKey(const std::string & path)

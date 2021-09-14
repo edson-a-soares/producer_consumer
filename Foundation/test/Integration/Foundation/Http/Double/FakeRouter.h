@@ -2,7 +2,7 @@
 #define Foundation_Http_Double_FakeRouter_INCLUDED
 
 #include "Foundation/Http/Router.h"
-#include "Foundation/Http/Double/EscapedNotFoundErrorHandler.h"
+#include "Foundation/Http/Double/EscapedErrorHandler.h"
 #include "Foundation/Http/ResourceFactoryRoutingTableInterface.h"
 #include "Foundation/Http/Double/FakeResourceFactoryRoutingTable.h"
 
@@ -14,7 +14,7 @@ namespace Http {
     {
     public:
         void loadEndpoints() override;
-        Poco::Net::HTTPRequestHandler * notFoundErrorHandler() override;
+        std::unique_ptr<ErrorHandlerBuilderInterface> errorHandler() override;
         std::unique_ptr<Foundation::Http::ResourceFactoryRoutingTableInterface> getResourceFactoryRoutingTable() override;
 
     };
@@ -22,12 +22,13 @@ namespace Http {
 
     inline void FakeRouter::loadEndpoints()
     {
-        addEndpoint("/test_endpoint", "Resource::FakeResource");
+        addEndpoint("/test_endpoint",           "Resource::FakeResource");
+        addEndpoint("/test_endpoint_exception", "Resource::ExceptionResource");
     }
 
-    Poco::Net::HTTPRequestHandler * FakeRouter::notFoundErrorHandler()
+    std::unique_ptr<ErrorHandlerBuilderInterface> FakeRouter::errorHandler()
     {
-        return new Foundation::Http::EscapedNotFoundErrorHandler();
+        return std::make_unique<EscapedErrorHandler::Builder>();
     }
 
     inline std::unique_ptr<Foundation::Http::ResourceFactoryRoutingTableInterface> FakeRouter::getResourceFactoryRoutingTable()

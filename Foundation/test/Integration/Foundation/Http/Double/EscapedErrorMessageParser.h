@@ -34,7 +34,11 @@ namespace Http {
     ) {
         auto xmlMessageObject = DefaultXMLErrorMessage(type, status, detail, "0");
         auto errorMessage = xmlMessageObject.toXml();
+
+        // When running HttpResponse on tests, the response body is cut on white space.
+        // This replaces white spaces with an underscore. So the tests don't fail because of this.
         std::replace(errorMessage.begin(), errorMessage.end(), ' ', '_');
+
         return errorMessage;
     }
 

@@ -2,6 +2,8 @@
 #include "Foundation/IPC/MessageBus.h"
 #include "Foundation/IPC/BoundedBuffer.h"
 
+#include <iostream>
+
 namespace Foundation {
 namespace IPC {
 
@@ -25,7 +27,15 @@ namespace IPC {
 
     void MessageBus::sendMessage(const std::string & content)
     {
-        inputChannel->put(content);
+        try {
+            inputChannel->put(content);
+
+        } catch (Poco::Exception &) {
+            std::cout << "MessageBus::sendMessage(const std::string &)" << std::endl;
+            //throw;
+        } catch (...) {
+            std::cout << "MessageBus::sendMessage(const std::string &)" << std::endl;
+        }
     }
 
     void MessageBus::readMessage(const std::function<std::string (const std::string & message)> & messageHandler) const

@@ -1,3 +1,4 @@
+#include "Poco/Exception.h"
 #include "Producer/MessageService.h"
 #include "Foundation/IPC/MessageBus.h"
 #include "Adapter/Http/Resource/MessageResource.h"
@@ -13,8 +14,13 @@ namespace Http {
         using namespace Foundation::IPC;
 
         auto resource = new MessageResource();
-        auto service  = MessageService (MessageBus::Factory::createClient(std::make_unique<DefaultMessageBusChannel>()));
-        resource->setMessageService(service);
+        try {
+            auto service = MessageService(MessageBus::Factory::createClient(std::make_unique<DefaultMessageBusChannel>()));
+            resource->setMessageService(service);
+
+        } catch (Poco::Exception &) {
+            throw;
+        }
 
         return resource;
     }

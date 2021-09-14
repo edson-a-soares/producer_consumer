@@ -6,7 +6,7 @@ namespace IPC {
 
     int MainMessageBusChannel::length()
     {
-        return 25 * 1024;
+        return 50 * 1024;
     }
 
     std::string MainMessageBusChannel::inputName()

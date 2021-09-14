@@ -3,8 +3,9 @@
 
 #include <string>
 #include "FakeResourceFactory.h"
-#include "Foundation/Http/ResourceFactoryRoutingTableInterface.h"
 #include "Foundation/Http/Double/FakeResourceFactory.h"
+#include "Foundation/Http/Double/ExceptionResourceFactory.h"
+#include "Foundation/Http/ResourceFactoryRoutingTableInterface.h"
 
 namespace Foundation {
 namespace Http {
@@ -28,6 +29,9 @@ namespace Http {
 
         if ( resourceName == "Resource::FakeResource" )
             resourceFactory = std::make_unique<Foundation::Http::FakeResourceFactory>();
+
+        if ( resourceName == "Resource::ExceptionResource" )
+            resourceFactory = std::make_unique<Foundation::Http::ExceptionResourceFactory>();
 
         return resourceFactory;
     }

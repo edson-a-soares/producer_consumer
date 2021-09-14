@@ -17,13 +17,18 @@ namespace Producer {
 
         poco_assert_msg(!payload.empty(), "Payload can't be empty.");
 
-        auto parser  = XMLMessageParser();
-        auto message = parser.fromXml(payload);
-        messageBus->sendMessage(message->toXml());
+        try {
+            auto parser = XMLMessageParser();
+            auto message = parser.fromXml(payload);
+            messageBus->sendMessage(message->toXml());
 
-        auto response = messageBus->readResponse();
-        poco_assert_msg(!response.empty(), "IPC Response can't be empty.");
-        return parser.fromXml(response);
+            auto response = messageBus->readResponse();
+            poco_assert_msg(!response.empty(), "IPC Response can't be empty.");
+            return parser.fromXml(response);
+
+        } catch (Poco::Exception &) {
+            throw;
+        }
     }
 
     std::unique_ptr<Foundation::Message::XMLMessage> MessageService::exchange(

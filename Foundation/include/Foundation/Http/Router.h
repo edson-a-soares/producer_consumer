@@ -4,8 +4,10 @@
 #include <map>
 #include <memory>
 #include <string>
+#include "Poco/Exception.h"
 #include "Foundation/Foundation.h"
 #include "Poco/Net/HTTPRequestHandlerFactory.h"
+#include "Foundation/Http/ErrorHandlerBuilderInterface.h"
 #include "Foundation/Http/ResourceFactoryRoutingTableInterface.h"
 
 namespace Foundation {
@@ -21,7 +23,7 @@ namespace Http {
     protected:
         virtual void loadEndpoints() = 0;
         void commonPathPrefix(const std::string & path);
-        virtual Poco::Net::HTTPRequestHandler * notFoundErrorHandler();
+        virtual std::unique_ptr<ErrorHandlerBuilderInterface> errorHandler();
         void addEndpoint(const std::string & path, const std::string & resourceFactoryName);
         virtual std::unique_ptr<ResourceFactoryRoutingTableInterface> getResourceFactoryRoutingTable() = 0;
 
